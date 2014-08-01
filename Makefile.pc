@@ -1,0 +1,23 @@
+# COMPILTAION FLAGS
+
+CXXFLAGS=-DBUILD_PC `pkg-config --cflags sdl2`
+LDFLAGS=`pkg-config --libs sdl2` -pthread
+
+# OBJECT FILES
+
+OBJS=$(patsubst %.cpp,build-pc/%.o,$(wildcard *.cpp **/*.cpp **/**/*.cpp))
+
+# RULES
+
+ponghaum-pc:${OBJS}
+	${CXX} ${CXXFLAGS} -o $@ ${OBJS} ${LDFLAGS}
+
+play: ponghaum-pc
+	./ponghaum-pc
+
+build-pc/%.o:%.cpp $(wildcard *.h **/*.h **/**/*.h)
+	@mkdir -p build-pc/$(dir $<)
+	$(CXX) ${CXXFLAGS} -c $< -o $@
+
+clean:
+	rm -rf build-pc ponghaum-pc
