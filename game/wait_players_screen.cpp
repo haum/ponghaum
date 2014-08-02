@@ -10,6 +10,7 @@ void WaitPlayersScreen::init() {
 	ball_position.set_duration(2000);
 	ball_position.start();
 	ball.init();
+	ball.set_queue(true);
 }
 
 void WaitPlayersScreen::animate() {

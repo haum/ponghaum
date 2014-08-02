@@ -13,6 +13,11 @@ class BallSprite : public Sprite {
 		  */
 		void set_shiny(bool active);
 
+		/** Set queue behind ball effect
+		  * @param [in] active Effect active
+		  */
+		void set_queue(bool active);
+
 		/** Animation function **/
 		virtual void animate();
 
@@ -20,7 +25,11 @@ class BallSprite : public Sprite {
 		/** Init function **/
 		virtual void init_sprite();
 
-		bool shiny; // Shiny flag
+		bool shiny; /// Shiny flag
+		bool queue; /// Queue flag
+
+		float queue_length; /// Queue length
+		float last_position; /// Registers last position to compute speed
 };
 
 #endif
