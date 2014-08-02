@@ -11,30 +11,31 @@ void WaitPlayersScreen::init() {
 	ball_position.start();
 	ball.init();
 	ball.set_queue(true);
+	pad1.init();
+	pad1.reverse(true);
+	pad2.init();
+	hmi.log("Attente des joueurs : maintenez les buzzers appuyés\n");
 }
 
 void WaitPlayersScreen::animate() {
 	hmi.leds.clear();
 	ball_position.animate();
-	for (int i = -HMI_WIDTH; i < -HMI_WIDTH / 3; ++i) {
-		if (hmi.btn1.clicked())
-			hmi.leds.set(i, 0xff, 0, 0);
-		else if (hmi.btn1.pressed())
-			hmi.leds.set(i, 0x66, 0, 0);
-		else
-			hmi.leds.set(i, 0x22, 0, 0);
+	if (hmi.btn1.clicked() && pad1.can_fire()) {
+		last_touch = PLAYER1;
+		pad1.fire(20);
 	}
-	for (int i = HMI_WIDTH; i > HMI_WIDTH / 3; --i) {
-		if (hmi.btn2.clicked())
-			hmi.leds.set(i, 0, 0xff, 0);
-		else if (hmi.btn2.pressed())
-			hmi.leds.set(i, 0, 0x66, 0);
-		else
-			hmi.leds.set(i, 0, 0x22, 0);
+	if (hmi.btn2.clicked() && pad2.can_fire()) {
+		last_touch = PLAYER2;
+		pad2.fire(20);
 	}
-	bool dbl = hmi.btn1.pressed() && hmi.btn2.pressed();
-	ball.set_shiny(dbl);
-	ball.reverse(dbl);
+	if (hmi.btn1.pressed() && hmi.btn2.pressed()) {
+		game.data.last_winner = last_touch;
+		game.start_game(true);
+	}
+
 	ball.set_position(30 * (ball_position * 2 - 1));
+
+	pad1.animate();
+	pad2.animate();
 	ball.animate();
 }

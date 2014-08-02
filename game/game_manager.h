@@ -15,6 +15,20 @@ class GameScreen {
 		virtual void animate() = 0;
 };
 
+/** Players enumeraction **/
+enum GamePlayer {
+	PLAYER1,
+	PLAYER2
+};
+
+/** Game persistent data **/
+struct GameData {
+	GamePlayer last_winner; /// Last winner player
+	int p1score; /// Score of player 1
+	int p2score; /// Score of player 2
+};
+
+
 /** Class that manages the game **/
 class GameManager {
 	public:
@@ -26,6 +40,13 @@ class GameManager {
 
 		/** Animate outputs and treat inputs **/
 		void animate();
+
+		/** Start a game
+		  * @param [in] reset Should complete game be reset
+		  */
+		void start_game(bool reset = false);
+
+		GameData data;
 
 	private:
 		GameState state; /// Current game phase

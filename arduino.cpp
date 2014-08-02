@@ -3,9 +3,8 @@
 
 void setup() {
 	hmi.init();
-	game.init();
-
 	hmi.log("Bienvenue dans ponghaum !\n");
+	game.init();
 }
 
 void loop() {
