@@ -32,6 +32,7 @@ void BallSprite::animate() {
 	flicker2.animate();
 	if (queue) {
 		queue_length += (get_position() - last_position);
+		queue_length -= queue_length / 10;
 		if (queue_length > 10) queue_length = 10;
 		if (queue_length < -10) queue_length = -10;
 		int imax = get_reversed() ? -queue_length : queue_length;
