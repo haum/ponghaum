@@ -3,7 +3,16 @@
 
 /** Game phases enumeration **/
 enum GameState {
-	GameState_SIMPLE_DEMO, /// Only a simple demo
+	GameState_WAIT_PLAYERS, // Wait for players
+	GameState_PLAY, // Actual game
+	GameState_SCORE_DISPLAY, // Display score
+};
+
+/** Generic game screen **/
+class GameScreen {
+	public:
+		virtual void init() {}
+		virtual void animate() = 0;
 };
 
 /** Class that manages the game **/
