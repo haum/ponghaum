@@ -36,14 +36,17 @@ void BallSprite::animate() {
 		if (queue_length < -10) queue_length = -10;
 		int imax = get_reversed() ? -queue_length : queue_length;
 		for (int i = 1; i < imax; ++i)
-			draw(-i, 255 - 12 * i, 120 - 12 * i, 0);
+			if (shiny)
+				draw(-i, 0, 120 - 12 * i, 255 - 12 * i);
+			else
+				draw(-i, 255 - 12 * i, 120 - 12 * i, 0);
 		for (int i = -1; i > imax; --i)
-			draw(-i, 255 + 12 * i, 120 + 12 * i, 0);
+			if (shiny)
+				draw(-i, 0, 120 + 12 * i, 255 + 12 * i);
+			else
+				draw(-i, 255 + 12 * i, 120 + 12 * i, 0);
 	}
 	float factor = flicker1.get_value() / 2 + 0.5;
-	if (shiny)
-		draw(0, 0, 0xaa * flicker2, 0xff * flicker2);
-	else
-		draw(0, 0xff * factor, 0xff * factor, 0xff * factor);
+	draw(0, 0xff * factor, 0xff * factor, 0xff * factor);
 	last_position = get_position();
 }
