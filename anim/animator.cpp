@@ -30,6 +30,10 @@ void Animator::resume() {
 	run = true;
 }
 
+bool Animator::running() {
+	return run;
+}
+
 void Animator::init() {
 	looped = false;
 	run = false;

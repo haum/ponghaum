@@ -30,6 +30,11 @@ class Animator {
 		/** Resume from pause **/
 		void resume();
 
+		/** Is animation running ?
+		  * @return true if running
+		  */
+		bool running();
+
 		/** Initialize function **/
 		void init();
 
