@@ -4,9 +4,13 @@
 #include "animator.h"
 
 class LinearAnimator: public Animator {
-	virtual float transfert(float percent) {
-		return percent;
-	}
+	public:
+		LinearAnimator();
+		void set_knee(float k);
+		virtual float transfert(float percent);
+
+	private:
+		float knee;
 };
 
 #endif
