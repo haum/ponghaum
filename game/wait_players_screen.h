@@ -3,6 +3,7 @@
 
 #include "game_manager.h"
 #include "../sprites/ball_sprite.h"
+#include "../anim/linear_animator.h"
 
 class WaitPlayersScreen : public GameScreen {
 	public:
@@ -13,8 +14,8 @@ class WaitPlayersScreen : public GameScreen {
 		virtual void animate();
 
 	private:
+		LinearAnimator ball_position;
 		BallSprite ball; // The ball
-		float ball_position;
 };
 
 #endif

@@ -4,12 +4,17 @@
 #include "../hmi/hmi_manager.h"
 
 void WaitPlayersScreen::init() {
+	ball_position.init();
+	ball_position.loop(true);
+	ball_position.updown(true);
+	ball_position.set_duration(2000);
+	ball_position.start();
 	ball.init();
-	ball_position = 0;
 }
 
 void WaitPlayersScreen::animate() {
 	hmi.leds.clear();
+	ball_position.animate();
 	for (int i = -HMI_WIDTH; i < -HMI_WIDTH / 3; ++i) {
 		if (hmi.btn1.clicked())
 			hmi.leds.set(i, 0xff, 0, 0);
@@ -29,8 +34,6 @@ void WaitPlayersScreen::animate() {
 	bool dbl = hmi.btn1.pressed() && hmi.btn2.pressed();
 	ball.set_shiny(dbl);
 	ball.reverse(dbl);
-	ball_position += 0.3;
-	if (ball_position > 15) ball_position = 0;
-	ball.set_position(ball_position);
+	ball.set_position(30 * (ball_position * 2 - 1));
 	ball.animate();
 }
