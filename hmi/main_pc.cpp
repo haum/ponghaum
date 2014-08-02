@@ -10,6 +10,9 @@ void loop(); // Forward arduino
 int pc_btn_1 = 0; // Button 1
 int pc_btn_2 = 0; // Button 2
 
+unsigned int pixel_size = 4;
+unsigned int pixel_jump = 4;
+
 long long milliseconds = 0; // Elapsed milliseconds
 
 SDL_Surface * screen = 0; // Screen surface
@@ -20,6 +23,18 @@ long long millis() {
 }
 
 int main(int argc, char** argv) {
+	// Get pixel conf
+	if (argc == 3) {
+		unsigned int size;
+		unsigned int jump;
+		size = atoi(argv[1]);
+		jump = atoi(argv[2]);
+		if (jump != 0 && size != 0 && jump >= size) {
+			pixel_size = size;
+			pixel_jump = jump;
+		}
+	}
+
 	// Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		fprintf(stdout,"SDL_Init fail (%s)\n", SDL_GetError());
@@ -32,8 +47,8 @@ int main(int argc, char** argv) {
 		"ponghaum emulation",
 		SDL_WINDOWPOS_UNDEFINED, // x
 		SDL_WINDOWPOS_UNDEFINED, // y
-		640, // w
-		200, // h
+		149 * pixel_jump, // w
+		100, // h
 		SDL_WINDOW_SHOWN // flags
 	);
 	screen = SDL_GetWindowSurface(pWindow);

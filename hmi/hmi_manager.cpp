@@ -6,6 +6,8 @@ long long millis();
 extern SDL_Surface * screen;
 extern int pc_btn_1;
 extern int pc_btn_2;
+extern unsigned int pixel_size;
+extern unsigned int pixel_jump;
 #endif
 
 HmiManager hmi;
@@ -47,10 +49,10 @@ void HmiLeds::set(int led, unsigned char r, unsigned char g, unsigned char b) {
 #ifdef BUILD_PC
 	if (screen) {
 		SDL_Rect led_rect;
-		led_rect.x = 320 + 4 * led;
-		led_rect.y = (200 - 4) / 2;
-		led_rect.w = 4;
-		led_rect.h = 4;
+		led_rect.x = (HMI_WIDTH + led) * pixel_jump;
+		led_rect.y = (100 - pixel_size) / 2;
+		led_rect.w = pixel_size;
+		led_rect.h = pixel_size;
 		SDL_FillRect(screen, &led_rect, SDL_MapRGB(screen->format, r, g, b));
 	}
 #endif
