@@ -84,3 +84,9 @@ void HmiManager::log(const char *msg) {
 	printf("%s", msg);
 #endif
 }
+
+void HmiManager::log(int msg) {
+#ifdef BUILD_PC
+	printf("%d", msg);
+#endif
+}

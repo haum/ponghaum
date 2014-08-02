@@ -73,6 +73,11 @@ class HmiManager {
 		  */
 		void log(const char *msg);
 
+		/** Send number to console
+		  * @param [in] msg Number to send
+		  */
+		void log(int msg);
+
 		HmiButton btn1; /// Button 1
 		HmiButton btn2; /// Button 2
 		HmiLeds leds; /// Leds
