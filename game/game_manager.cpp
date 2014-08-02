@@ -3,12 +3,14 @@
 
 #include "wait_players_screen.h"
 #include "playing_screen.h"
+#include "scores_screen.h"
 
 GameManager game;
 
 static struct {
 	WaitPlayersScreen wait_players;
 	PlayingScreen playing;
+	ScoresScreen scores;
 } screens;
 
 static GameScreen *scr = 0;
@@ -32,5 +34,10 @@ void GameManager::start_game(bool reset) {
 		data.p2score = 0;
 	}
 	scr = &screens.playing;
+	scr->init();
+}
+
+void GameManager::show_scores() {
+	scr = &screens.scores;
 	scr->init();
 }

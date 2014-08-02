@@ -46,6 +46,9 @@ class GameManager {
 		  */
 		void start_game(bool reset = false);
 
+		/** Show scores **/
+		void show_scores();
+
 		GameData data;
 
 	private:
