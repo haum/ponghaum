@@ -43,11 +43,11 @@ void HmiLeds::clear() {
 }
 
 void HmiLeds::set(int led, unsigned char r, unsigned char g, unsigned char b) {
-	if (led < 0 || led >= HMI_NB_LEDS) return;
+	if (led < -HMI_WIDTH || led > HMI_WIDTH) return;
 #ifdef BUILD_PC
 	if (screen) {
 		SDL_Rect led_rect;
-		led_rect.x = 20 + 4 * led;
+		led_rect.x = 320 + 4 * led;
 		led_rect.y = (200 - 4) / 2;
 		led_rect.w = 4;
 		led_rect.h = 4;

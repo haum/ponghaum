@@ -13,7 +13,7 @@ void GameManager::animate() {
 	switch (state) {
 		case GameState_SIMPLE_DEMO:
 			hmi.leds.clear();
-			for (int i = 0; i < HMI_NB_LEDS / 2; ++i) {
+			for (int i = -HMI_WIDTH; i < 0; ++i) {
 				if (hmi.btn1.clicked())
 					hmi.leds.set(i, 0xff, 0, 0);
 				else if (hmi.btn1.pressed())
@@ -21,7 +21,7 @@ void GameManager::animate() {
 				else
 					hmi.leds.set(i, 0x22, 0, 0);
 			}
-			for (int i = HMI_NB_LEDS / 2; i < HMI_NB_LEDS; ++i) {
+			for (int i = HMI_WIDTH; i > 0; --i) {
 				if (hmi.btn2.clicked())
 					hmi.leds.set(i, 0, 0xff, 0);
 				else if (hmi.btn2.pressed())

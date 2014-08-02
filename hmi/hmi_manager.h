@@ -1,7 +1,7 @@
 #ifndef HMI_MANAGER_H
 #define HMI_MANAGER_H
 
-#define HMI_NB_LEDS 150 /// Number of leds of the interface
+#define HMI_WIDTH 74 /// Number of leds of each side [-HMI_WIDTH:HMI_WIDTH]
 #define HMI_DTMS 15 /// Delta time in milliseconds
 
 class HmiManager;
