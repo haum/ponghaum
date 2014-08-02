@@ -2,6 +2,7 @@
 #define BALL_SPRITE_H
 
 #include "sprite.h"
+#include "../anim/linear_animator.h"
 
 class BallSprite : public Sprite {
 	public:
@@ -30,6 +31,9 @@ class BallSprite : public Sprite {
 
 		float queue_length; /// Queue length
 		float last_position; /// Registers last position to compute speed
+
+		LinearAnimator flicker1; /// Flicker 1 animation
+		LinearAnimator flicker2; /// Flicker 2 animation
 };
 
 #endif
