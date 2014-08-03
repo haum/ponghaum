@@ -15,7 +15,7 @@ class ScoresScreen : public GameScreen {
 	private:
 		ScoreSprite score1; // Left score
 		ScoreSprite score2; // Right score
-		bool release_to_quit; // click flag
+		void (GameManager::*fct)(); // Function to call on quit
 };
 
 #endif

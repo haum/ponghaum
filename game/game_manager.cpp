@@ -2,6 +2,7 @@
 #include "../hmi/hmi_manager.h"
 
 #include "wait_players_screen.h"
+#include "test_hardware_screen.h"
 #include "playing_screen.h"
 #include "scores_screen.h"
 
@@ -9,6 +10,7 @@ GameManager game;
 
 static struct {
 	WaitPlayersScreen wait_players;
+	TestHardwareScreen test_hardware;
 	PlayingScreen playing;
 	ScoresScreen scores;
 } screens;
@@ -28,16 +30,23 @@ void GameManager::animate() {
 	scr->animate();
 }
 
-void GameManager::start_game(bool reset) {
-	if (reset) {
-		data.p1score = 0;
-		data.p2score = 0;
-	}
+void GameManager::restart_game() {
+	data.p1score = 0;
+	data.p2score = 0;
+	play();
+}
+
+void GameManager::play() {
 	scr = &screens.playing;
 	scr->init();
 }
 
 void GameManager::show_scores() {
 	scr = &screens.scores;
+	scr->init();
+}
+
+void GameManager::test_hardware() {
+	scr = &screens.test_hardware;
 	scr->init();
 }

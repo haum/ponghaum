@@ -41,13 +41,17 @@ class GameManager {
 		/** Animate outputs and treat inputs **/
 		void animate();
 
-		/** Start a game
-		  * @param [in] reset Should complete game be reset
-		  */
-		void start_game(bool reset = false);
+		/** Restart a game **/
+		void restart_game();
+
+		/** Play again **/
+		void play();
 
 		/** Show scores **/
 		void show_scores();
+
+		/** HardwareTest screen **/
+		void test_hardware();
 
 		GameData data;
 

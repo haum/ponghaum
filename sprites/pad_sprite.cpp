@@ -5,6 +5,7 @@ void PadSprite::init_sprite() {
 	lightning.init();
 	lightning.set_duration(500);
 	lightning.set_knee(0.2);
+	size = 0;
 }
 
 void PadSprite::fire(int size) {

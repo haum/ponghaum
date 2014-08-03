@@ -20,6 +20,7 @@ class WaitPlayersScreen : public GameScreen {
 		PadSprite pad1; // Left pad
 		PadSprite pad2; // Right pad
 		GamePlayer last_touch; // Which button is the last touch
+		bool quit; // Quit screen flag
 };
 
 #endif

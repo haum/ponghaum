@@ -14,6 +14,7 @@ void WaitPlayersScreen::init() {
 	pad1.init();
 	pad1.reverse(true);
 	pad2.init();
+	quit = false;
 	hmi.log("Attente des joueurs : maintenez les buzzers appuyés\n");
 }
 
@@ -28,12 +29,17 @@ void WaitPlayersScreen::animate() {
 		last_touch = PLAYER2;
 		pad2.fire(20);
 	}
-	if (hmi.btn1.slpressed(true) && hmi.btn2.slpressed(true)) {
+	if (hmi.btn1.dpressed(true) && hmi.btn2.dpressed(true)) {
+		game.test_hardware();
+	} else if (hmi.btn1.slpressed(true) && hmi.btn2.slpressed(true)) {
+		quit = true;
+	} else if (hmi.btn1.released() && hmi.btn2.released() && quit) {
 		game.data.last_winner = last_touch;
-		game.start_game(true);
+		game.restart_game();
 	}
 
 	ball.set_position(30 * (ball_position * 2 - 1));
+	ball.set_shiny(quit);
 
 	pad1.animate();
 	pad2.animate();
