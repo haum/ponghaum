@@ -44,7 +44,8 @@ void Animator::init() {
 }
 
 void Animator::animate() {
-	percent += delta;
+	if (run)
+		percent += delta;
 	if (percent >= 1) {
 		percent = 1;
 		if (looped)
