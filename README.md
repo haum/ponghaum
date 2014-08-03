@@ -37,3 +37,15 @@ make -f Makefile.pc
 ```
 
 Les dépendances sont seulement pthread et SDL2.
+
+## Licence
+
+Le projet est fourni sous licence MIT.
+
+C'est une licence libre qui vous permet par exemple :
+ - de le copier,
+ - de l'étudier,
+ - de l'adapter à vos besoins,
+ - de le redistribuer
+
+Nous vous encourageons vivement à forker et partager !
