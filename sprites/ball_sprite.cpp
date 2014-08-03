@@ -15,6 +15,8 @@ void BallSprite::set_queue(bool active) {
 void BallSprite::init_sprite() {
 	shiny = false;
 	queue = false;
+	queue_length = 0;
+	last_position = get_position();
 	flicker1.init();
 	flicker1.loop(true);
 	flicker1.updown(true);

@@ -23,6 +23,8 @@ class PlayingScreen : public GameScreen {
 		float ball_local_speed;
 		LinearAnimator ball_speed;
 		int ball_direction;
+		bool quit;
+		bool inhibed_controls;
 };
 
 #endif

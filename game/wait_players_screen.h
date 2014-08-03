@@ -21,6 +21,8 @@ class WaitPlayersScreen : public GameScreen {
 		PadSprite pad2; // Right pad
 		GamePlayer last_touch; // Which button is the last touch
 		bool quit; // Quit screen flag
+		float quit_start; // Start of quit animation;
+		float quit_dist; // Distance of the quit animation
 };
 
 #endif
