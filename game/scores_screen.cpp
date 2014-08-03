@@ -21,9 +21,9 @@ void ScoresScreen::init() {
 
 void ScoresScreen::animate() {
 	hmi.leds.clear();
-	if (hmi.btn1.pressed() && hmi.btn2.pressed()) {
+	if (hmi.btn1.spressed(true) && hmi.btn2.spressed(true)) {
 		release_to_quit = true;
-	} else if (!hmi.btn1.pressed() && !hmi.btn2.pressed() && release_to_quit) {
+	} else if (hmi.btn1.released() && hmi.btn2.released() && release_to_quit) {
 		if (game.data.p1score + game.data.p2score == 9)
 			game.init();
 		else

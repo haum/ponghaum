@@ -41,6 +41,7 @@ class HmiManager {
 
 	private:
 		long last_frame_time; /// Time of last frame
+		long last_btn_time; /// Time of last button computation
 		bool can_animate_flag; /// Flag indicating if we can animate
 };
 

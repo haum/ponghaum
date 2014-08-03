@@ -54,7 +54,7 @@ void PlayingScreen::animate() {
 	}
 
 	// Play pads
-	if (hmi.btn1.clicked() && pad1.can_fire()) {
+	if (hmi.btn1.stouched() && pad1.can_fire()) {
 		if (20 - HMI_WIDTH > ball_position) {
 			pad1.fire(HMI_WIDTH + ball_position);
 			ball_direction = 1;
@@ -63,7 +63,7 @@ void PlayingScreen::animate() {
 			pad1.fire(20);
 		}
 	}
-	if (hmi.btn2.clicked() && pad2.can_fire()) {
+	if (hmi.btn2.stouched() && pad2.can_fire()) {
 		if (HMI_WIDTH - 20 < ball_position) {
 			pad2.fire(HMI_WIDTH - ball_position);
 			ball_direction = -1;

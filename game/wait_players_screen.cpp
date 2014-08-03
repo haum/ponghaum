@@ -20,15 +20,15 @@ void WaitPlayersScreen::init() {
 void WaitPlayersScreen::animate() {
 	hmi.leds.clear();
 	ball_position.animate();
-	if (hmi.btn1.clicked() && pad1.can_fire()) {
+	if (hmi.btn1.stouched() && pad1.can_fire()) {
 		last_touch = PLAYER1;
 		pad1.fire(20);
 	}
-	if (hmi.btn2.clicked() && pad2.can_fire()) {
+	if (hmi.btn2.stouched() && pad2.can_fire()) {
 		last_touch = PLAYER2;
 		pad2.fire(20);
 	}
-	if (hmi.btn1.pressed() && hmi.btn2.pressed()) {
+	if (hmi.btn1.slpressed(true) && hmi.btn2.slpressed(true)) {
 		game.data.last_winner = last_touch;
 		game.start_game(true);
 	}

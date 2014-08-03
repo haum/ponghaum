@@ -13,22 +13,30 @@ void HmiManager::init() {
 	btn1.init();
 	btn2.init();
 	last_frame_time = millis();
+	last_btn_time = millis();
 	can_animate_flag = false;
 }
 
 bool HmiManager::can_animate() {
 	bool ret = can_animate_flag;
-	can_animate_flag = false;
 	return ret;
 }
 
 void HmiManager::loop_step() {
 	long time = millis();
+	if (can_animate_flag) {
+		can_animate_flag = false;
+		btn1.endframe();
+		btn2.endframe();
+	}
+	if (time >= last_btn_time + HMI_DTMS / 3) {
+		last_btn_time = time;
+		btn1.compute(pc_btn_1);
+		btn2.compute(pc_btn_2);
+	}
 	if (time >= last_frame_time + HMI_DTMS) {
 		last_frame_time = time;
 		can_animate_flag = true;
-		btn1.compute(pc_btn_1);
-		btn2.compute(pc_btn_2);
 	}
 }
 
