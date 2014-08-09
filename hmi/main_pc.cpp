@@ -85,18 +85,18 @@ int main(int argc, char** argv) {
 						break;
 
 					case SDL_KEYUP:
-						if (event.key.keysym.sym == SDLK_LEFT)
+						if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.scancode == SDL_SCANCODE_A)
 							pc_btn_1 = false;
-						else if (event.key.keysym.sym == SDLK_RIGHT)
+						else if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.scancode == SDL_SCANCODE_D)
 							pc_btn_2 = false;
 						break;
 
 					case SDL_KEYDOWN:
 						if (event.key.keysym.sym == SDLK_ESCAPE)
 							run = false;
-						else if (event.key.keysym.sym == SDLK_LEFT)
+						else if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.scancode == SDL_SCANCODE_A)
 							pc_btn_1 = true;
-						else if (event.key.keysym.sym == SDLK_RIGHT)
+						else if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.scancode == SDL_SCANCODE_D)
 							pc_btn_2 = true;
 						break;
 				}

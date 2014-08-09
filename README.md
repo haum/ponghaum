@@ -10,8 +10,8 @@ Ce dépôt contient les sources de ponghaum, le pong 1D réalisé par le HAUM (h
 
 Les boutons sont émulés par des touches de calvier :
 
- - Flèche Gauche = bouton 1
- - Flèche Droite = bouton 2
+ - Flèche Gauche ou touche Q sur clavier AZERTY = bouton 1
+ - Flèche Droite ou touche D sur clavier AZERTY = bouton 2
 
 Une touche permet aussi de quitter l'émulateur :
 
