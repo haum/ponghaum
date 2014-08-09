@@ -77,6 +77,7 @@ void PlayingScreen::animate() {
 				pad2.fire(20);
 			}
 		}
+		ball.animate();
 	} else if (pad1.can_fire() && pad2.can_fire()) {
 		game.show_scores();
 	}
@@ -84,5 +85,4 @@ void PlayingScreen::animate() {
 	// Update all
 	pad1.animate();
 	pad2.animate();
-	ball.animate();
 }
