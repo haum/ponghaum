@@ -15,6 +15,7 @@ unsigned int pixel_jump = 4;
 
 long long milliseconds = 0; // Elapsed milliseconds
 
+static SDL_Window* pWindow = NULL;
 SDL_Surface * screen = 0; // Screen surface
 
 // Return elapsed milliseconds
@@ -42,7 +43,6 @@ int main(int argc, char** argv) {
 	}
 
 	// Create window
-	SDL_Window* pWindow = NULL;
 	pWindow = SDL_CreateWindow(
 		"ponghaum emulation",
 		SDL_WINDOWPOS_UNDEFINED, // x
@@ -105,9 +105,6 @@ int main(int argc, char** argv) {
 			// Run arduino loop function
 			loop();
 
-			// Update window
-			SDL_UpdateWindowSurface(pWindow);
-
 			// Wait
 			pthread_cond_timedwait(&my_cond, &my_mutex, &t);
 
@@ -121,6 +118,11 @@ int main(int argc, char** argv) {
 
 	SDL_Quit();
 	return 0;
+}
+
+void pc_update_screen() {
+	// Update window
+	SDL_UpdateWindowSurface(pWindow);
 }
 
 #endif
