@@ -19,11 +19,22 @@ git submodule init
 git submodule update
 ```
 
-Puis utiliser le Makefile pour Arduino :
+Les boutons sons reliés aux entrées 2 et 3 de l'Arduino (définit dans le fichier hmi/hmi_manager.cpp )
+Le bandeau de LEDs est relier a l'Arduino par la sortie 10 (definit dans le fichier hmi/hmi_leds.cpp )
+
+Ensuite utiliser le Makefile pour Arduino :
 
 ```
 make -f Makefile.arduino
 ```
+
+Le téléchargement dans l'Arduino se fait par :
+
+```
+make -f Makefile.arduino upload
+```
+
+have fun :)
 
 ## Émulateur
 
@@ -58,31 +69,6 @@ make -f Makefile.pc
 ```
 
 Les dépendances sont seulement pthread et SDL2.
-
-
-## Arduino
-
-Les boutons sons reliés aux entrées 2 et 3 de l'Arduino (définit dans le fichier hmi/hmi_manager.cpp ouvert)
-Le bandeau de LEDs est relier a l'Arduino par la sortie 10 (definit dans le meme fichier)
-
-### compilation de la version Arduino
-
-Il faut installer le Makefile générique Arduino https://github.com/sudar/Arduino-Makefile 
-Il faut ensuite ajuster le fichier Makefile.arduino en fonction de votre installation et de votre modèle d'Arduino
-
-La compilation du projet se fait par :
-
-```
-make -f Makefile.arduino
-```
-
-le téléchargement dans l'Arduino:
-
-```
-make -f Makefile.arduino upload
-```
-
-have fun :)
 
 ## Licence
 
