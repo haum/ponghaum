@@ -10,6 +10,7 @@ extern int pc_btn_2;
 #include "FastLED.h"
 #define NBLEDS 149
 CRGB fastleds[NBLEDS];
+#define LED_DATA_PIN 10
 #define BTN1 2
 #define BTN2 3
 #endif
@@ -25,7 +26,7 @@ void HmiManager::init() {
 #ifndef BUILD_PC
     pinMode(BTN1, INPUT_PULLUP);
     pinMode(BTN2, INPUT_PULLUP);
-	FastLED.addLeds<NEOPIXEL, 10>(fastleds, NBLEDS);
+	FastLED.addLeds<NEOPIXEL, LED_DATA_PIN>(fastleds, NBLEDS);
 #endif
 }
 
