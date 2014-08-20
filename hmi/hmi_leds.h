@@ -4,6 +4,9 @@
 /** Leds interface **/
 class HmiLeds {
 	public:
+		/** Init leds controller **/
+		void init();
+
 		/** Clears all leds **/
 		void clear();
 
@@ -14,6 +17,9 @@ class HmiLeds {
 		  * @param [in] b   Blue intensity  [0-255]
 		  */
 		void set(int led, unsigned char r, unsigned char g, unsigned char b);
+
+		/** Update leds status **/
+		void update();
 };
 
 #endif

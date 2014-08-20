@@ -7,10 +7,6 @@ extern int pc_btn_1;
 extern int pc_btn_2;
 #else
 #include "Arduino.h"
-#include "FastLED.h"
-#define NBLEDS 149
-CRGB fastleds[NBLEDS];
-#define LED_DATA_PIN 10
 #define BTN1 2
 #define BTN2 3
 #endif
@@ -20,13 +16,14 @@ HmiManager hmi;
 void HmiManager::init() {
 	btn1.init();
 	btn2.init();
+	leds.init();
 	last_frame_time = millis();
 	last_btn_time = millis();
 	can_animate_flag = false;
 #ifndef BUILD_PC
-    pinMode(BTN1, INPUT_PULLUP);
-    pinMode(BTN2, INPUT_PULLUP);
-	FastLED.addLeds<NEOPIXEL, LED_DATA_PIN>(fastleds, NBLEDS);
+	pinMode(BTN1, INPUT_PULLUP);
+	pinMode(BTN2, INPUT_PULLUP);
+	Serial.begin(115200);
 #endif
 }
 
@@ -48,10 +45,10 @@ void HmiManager::loop_step() {
 		btn1.compute(pc_btn_1);
 		btn2.compute(pc_btn_2);
 #else
-        btn1.compute(!digitalRead(BTN1));
-        btn2.compute(!digitalRead(BTN2));
-		FastLED.show();
+		btn1.compute(!digitalRead(BTN1));
+		btn2.compute(!digitalRead(BTN2));
 #endif
+		leds.update();
 	}
 	if (time >= last_frame_time + HMI_DTMS) {
 		last_frame_time = time;
@@ -62,11 +59,15 @@ void HmiManager::loop_step() {
 void HmiManager::log(const char *msg) {
 #ifdef BUILD_PC
 	printf("%s", msg);
+#else
+	Serial.print(msg);
 #endif
 }
 
 void HmiManager::log(int msg) {
 #ifdef BUILD_PC
 	printf("%d", msg);
+#else
+	Serial.print(msg);
 #endif
 }
