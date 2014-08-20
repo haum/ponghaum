@@ -4,6 +4,27 @@
 
 Ce dépôt contient les sources de ponghaum, le pong 1D réalisé par le HAUM (http://haum.org/)
 
+## Arduino
+
+### Présentation
+
+Le système utilise 150 leds en bande commandées par la bibliothèque FastLED et deux boutons. Les détails du système est/sera présent sur le site du HAUM.
+
+### Compilation
+
+Lorsque le dépôt est cloné, il faut penser à charger les submodules pour avoir les dépendances permettant de construire le programme pour Arduino.
+
+```
+git submodule init
+git submodule update
+```
+
+Puis utiliser le Makefile pour Arduino :
+
+```
+make -f Makefile.arduino
+```
+
 ## Émulateur
 
 ### Contôles
