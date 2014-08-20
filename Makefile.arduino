@@ -1,13 +1,8 @@
 BOARD_TAG    = pro5v328
 ARDUINO_PORT = /dev/ttyUSB0
+
 ARDUINO_LIBS = FastLED
-## ARDUINO_DIR  = /home/jerome/Documents/arduino-1.0.1
-ARDUINO_SKETCHBOOK = /home/jerome/Documents/sketchbook
-
-AVRDUDE = $(ARDUINO_DIR)/hardware/tools/avrdude
-AVRDUDE_CONF =$(ARDUINO_DIR)/hardware/tools/avrdude.conf
-
-LOCAL_CPP_SRCS=$(wildcard *.cpp **/*.cpp **/**/*.cpp)
-
-include /home/jerome/Documents/Arduino/Arduino-Makefile/Arduino.mk
+LOCAL_CPP_SRCS=$(wildcard *.cpp [!_]*/*.cpp [!_]*/[!_]*/*.cpp)
+USER_LIB_PATH=_submodules/arduino-libs
+include _submodules/arduino-mk/Arduino.mk
 

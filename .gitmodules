@@ -1,0 +1,6 @@
+[submodule "_submodules/arduino-mk"]
+	path = _submodules/arduino-mk
+	url = https://github.com/sudar/Arduino-Makefile.git
+[submodule "_submodules/arduino-libs/FastLED"]
+	path = _submodules/arduino-libs/FastLED
+	url = https://github.com/FastLED/FastLED.git

@@ -5,7 +5,7 @@ LDFLAGS=`pkg-config --libs sdl2` -pthread
 
 # OBJECT FILES
 
-OBJS=$(patsubst %.cpp,build-pc/%.o,$(wildcard *.cpp **/*.cpp **/**/*.cpp)) build-pc/arduino.ino.o
+OBJS=$(patsubst %.cpp,build-pc/%.o,$(wildcard *.cpp [!_]*/*.cpp [!_]*/[!_]*/*.cpp)) build-pc/arduino.ino.o
 
 # RULES
 
