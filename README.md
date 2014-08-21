@@ -10,6 +10,12 @@ Ce dépôt contient les sources de ponghaum, le pong 1D réalisé par le HAUM (h
 
 Le système utilise 150 leds en bande commandées par la bibliothèque FastLED et deux boutons. Les détails du système est/sera présent sur le site du HAUM.
 
+### Paramétrage
+
+Le paramétrage des pins de l'arduino est réalisé dans la première partie du fichier Makefile.arduino avec les constances ARDUINO_PINS__*.
+
+Par défaut, les boutons sont reliés aux entrées 2 et 3 et le bandeau de LEDs est relié à la sortie 10.
+
 ### Compilation
 
 Lorsque le dépôt est cloné, il faut penser à charger les submodules pour avoir les dépendances permettant de construire le programme pour Arduino.
@@ -18,9 +24,6 @@ Lorsque le dépôt est cloné, il faut penser à charger les submodules pour avo
 git submodule init
 git submodule update
 ```
-
-Les boutons sons reliés aux entrées 2 et 3 de l'Arduino (définit dans le fichier hmi/hmi_manager.cpp )
-Le bandeau de LEDs est relier a l'Arduino par la sortie 10 (definit dans le fichier hmi/hmi_leds.cpp )
 
 Ensuite utiliser le Makefile pour Arduino :
 
@@ -34,7 +37,7 @@ Le téléchargement dans l'Arduino se fait par :
 make -f Makefile.arduino upload
 ```
 
-have fun :)
+Have fun :)
 
 ## Émulateur
 
