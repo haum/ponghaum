@@ -15,7 +15,7 @@ CRGB fastleds[2*HMI_WIDTH+1];
 
 void HmiLeds::init() {
 #ifndef BUILD_PC
-	FastLED.addLeds<NEOPIXEL, 10>(fastleds, sizeof(fastleds)/sizeof(*fastleds));
+	FastLED.addLeds<NEOPIXEL, ARDUINO_PINS__FASTLED_DATA>(fastleds, sizeof(fastleds)/sizeof(*fastleds));
 #endif
 }
 

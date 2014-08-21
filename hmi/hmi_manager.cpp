@@ -7,8 +7,6 @@ extern int pc_btn_1;
 extern int pc_btn_2;
 #else
 #include "Arduino.h"
-#define BTN1 2
-#define BTN2 3
 #endif
 
 HmiManager hmi;
@@ -21,8 +19,8 @@ void HmiManager::init() {
 	last_btn_time = millis();
 	can_animate_flag = false;
 #ifndef BUILD_PC
-	pinMode(BTN1, INPUT_PULLUP);
-	pinMode(BTN2, INPUT_PULLUP);
+	pinMode(ARDUINO_PINS__BTN1, INPUT_PULLUP);
+	pinMode(ARDUINO_PINS__BTN2, INPUT_PULLUP);
 	Serial.begin(115200);
 #endif
 }
@@ -45,8 +43,8 @@ void HmiManager::loop_step() {
 		btn1.compute(pc_btn_1);
 		btn2.compute(pc_btn_2);
 #else
-		btn1.compute(!digitalRead(BTN1));
-		btn2.compute(!digitalRead(BTN2));
+		btn1.compute(!digitalRead(ARDUINO_PINS__BTN1));
+		btn2.compute(!digitalRead(ARDUINO_PINS__BTN2));
 #endif
 		leds.update();
 	}
