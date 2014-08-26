@@ -1,6 +1,8 @@
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
 
+#include "../anim/linear_animator.h"
+
 /** Game phases enumeration **/
 enum GameState {
 	GameState_WAIT_PLAYERS, // Wait for players
@@ -60,6 +62,7 @@ class GameManager {
 
 	private:
 		GameState state; /// Current game phase
+		LinearAnimator sleeptimer; /// Autoshutdown timer
 };
 
 extern GameManager game;
