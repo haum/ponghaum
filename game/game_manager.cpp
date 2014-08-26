@@ -30,6 +30,8 @@ void GameManager::init() {
 
 void GameManager::animate() {
 	scr->animate();
+	if (hmi.btn_power.slpressed())
+		init();
 }
 
 void GameManager::restart_game() {

@@ -3,6 +3,7 @@
 #ifdef BUILD_PC
 #include <stdio.h>
 long long millis();
+extern int pc_btn_pwr;
 extern int pc_btn_1;
 extern int pc_btn_2;
 #else
@@ -35,15 +36,18 @@ void HmiManager::loop_step() {
 	long time = millis();
 	if (can_animate_flag) {
 		can_animate_flag = false;
+		btn_power.endframe();
 		btn1.endframe();
 		btn2.endframe();
 	}
 	if (time >= last_btn_time + HMI_DTMS / 3) {
 		last_btn_time = time;
 #ifdef BUILD_PC
+		btn_power.compute(pc_btn_pwr);
 		btn1.compute(pc_btn_1);
 		btn2.compute(pc_btn_2);
 #else
+		btn_power.compute(!digitalRead(ARDUINO_PINS__POWERSTOP));
 		btn1.compute(!digitalRead(ARDUINO_PINS__BTN1));
 		btn2.compute(!digitalRead(ARDUINO_PINS__BTN2));
 #endif

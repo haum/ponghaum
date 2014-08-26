@@ -37,6 +37,7 @@ class HmiManager {
 		void log(int msg);
 
 		HmiAlim alim; /// Alim
+		HmiButton btn_power; /// Power button
 		HmiButton btn1; /// Button 1
 		HmiButton btn2; /// Button 2
 		HmiLeds leds; /// Leds

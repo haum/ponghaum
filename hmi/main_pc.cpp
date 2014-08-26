@@ -7,6 +7,7 @@
 void setup(); // Forward arduino
 void loop(); // Forward arduino
 
+int pc_btn_pwr = 0; // Power button
 int pc_btn_1 = 0; // Button 1
 int pc_btn_2 = 0; // Button 2
 
@@ -89,6 +90,8 @@ int main(int argc, char** argv) {
 							pc_btn_1 = false;
 						else if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.scancode == SDL_SCANCODE_D)
 							pc_btn_2 = false;
+						else if (event.key.keysym.sym == SDLK_SPACE)
+							pc_btn_pwr = false;
 						break;
 
 					case SDL_KEYDOWN:
@@ -98,6 +101,8 @@ int main(int argc, char** argv) {
 							pc_btn_1 = true;
 						else if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.scancode == SDL_SCANCODE_D)
 							pc_btn_2 = true;
+						else if (event.key.keysym.sym == SDLK_SPACE)
+							pc_btn_pwr = true;
 						break;
 				}
 			}
