@@ -4,9 +4,9 @@
 Animator::Animator() : looped(false), run(false), delta(HMI_DTMS/1000.0), percent(0), out(0) {
 }
 
-void Animator::set_duration(unsigned int ms) {
-	if (ms == 0) return;
-	delta = HMI_DTMS * 1.0 / ms;
+void Animator::set_duration(float ms) {
+	if (ms < 0) return;
+	delta = HMI_DTMS / ms;
 }
 
 void Animator::loop(bool active) {

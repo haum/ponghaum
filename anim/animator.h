@@ -9,7 +9,7 @@ class Animator {
 		/** Set animation duration
 		  * @param [in] ms Duration in milliseconds
 		  */
-		void set_duration(unsigned int ms);
+		void set_duration(float ms);
 
 		/** Activate loop mode or not
 		  * @param [in] active Loop active (true) or not (false)
