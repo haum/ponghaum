@@ -1,6 +1,7 @@
 #include "game_manager.h"
 #include "../hmi/hmi_manager.h"
 
+#include "poweroff_screen.h"
 #include "wait_players_screen.h"
 #include "test_hardware_screen.h"
 #include "playing_screen.h"
@@ -9,6 +10,7 @@
 GameManager game;
 
 static struct {
+	PoweroffScreen poweroff;
 	WaitPlayersScreen wait_players;
 	TestHardwareScreen test_hardware;
 	PlayingScreen playing;
@@ -18,11 +20,11 @@ static struct {
 static GameScreen *scr = 0;
 
 GameManager::GameManager() : state(GameState_WAIT_PLAYERS) {
-	scr = &screens.wait_players;
+	scr = &screens.poweroff;
 }
 
 void GameManager::init() {
-	scr = &screens.wait_players;
+	scr = &screens.poweroff;
 	scr->init();
 }
 
@@ -38,6 +40,11 @@ void GameManager::restart_game() {
 
 void GameManager::play() {
 	scr = &screens.playing;
+	scr->init();
+}
+
+void GameManager::initscreen() {
+	scr = &screens.wait_players;
 	scr->init();
 }
 

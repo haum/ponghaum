@@ -47,6 +47,9 @@ class GameManager {
 		/** Play again **/
 		void play();
 
+		/** Launch init screen **/
+		void initscreen();
+
 		/** Show scores **/
 		void show_scores();
 

@@ -8,6 +8,7 @@ class HmiManager;
 
 #include "hmi_button.h"
 #include "hmi_leds.h"
+#include "hmi_alim.h"
 
 /** Interface to real world **/
 class HmiManager {
@@ -35,6 +36,7 @@ class HmiManager {
 		  */
 		void log(int msg);
 
+		HmiAlim alim; /// Alim
 		HmiButton btn1; /// Button 1
 		HmiButton btn2; /// Button 2
 		HmiLeds leds; /// Leds

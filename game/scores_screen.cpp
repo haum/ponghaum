@@ -40,12 +40,12 @@ void ScoresScreen::animate() {
 	}
 
 	if (hmi.btn1.dpressed(true) && hmi.btn2.dpressed(true)) {
-		fct = &GameManager::init;
+		fct = &GameManager::initscreen;
 		score1.fadeout();
 		score2.fadeout();
 	} else if (hmi.btn1.spressed(true) && hmi.btn2.spressed(true)) {
 		if (game.data.p1score + game.data.p2score == 9) {
-			fct = &GameManager::init;
+			fct = &GameManager::initscreen;
 			score1.fadeout();
 			score2.fadeout();
 		} else {

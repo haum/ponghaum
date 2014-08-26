@@ -12,6 +12,7 @@ extern int pc_btn_2;
 HmiManager hmi;
 
 void HmiManager::init() {
+	alim.init();
 	btn1.init();
 	btn2.init();
 	leds.init();
