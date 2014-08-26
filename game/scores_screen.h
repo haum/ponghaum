@@ -13,6 +13,8 @@ class ScoresScreen : public GameScreen {
 		virtual void animate();
 
 	private:
+		bool ack1; // Ack left
+		bool ack2; // Ack right
 		ScoreSprite score1; // Left score
 		ScoreSprite score2; // Right score
 		void (GameManager::*fct)(); // Function to call on quit

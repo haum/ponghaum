@@ -21,7 +21,7 @@ void PlayingScreen::init() {
 	inhibed_controls = true;
 
 	ball_speed.init();
-	ball_speed.set_duration(60000);
+	ball_speed.set_duration(42000 / 2);
 	ball_speed.start();
 
 	quit = 0;
@@ -33,7 +33,7 @@ void PlayingScreen::animate() {
 	hmi.leds.clear();
 	ball_speed.animate();
 	// Compute ball speed and new position
-	float real_speed = HMI_DTMS / (600.0 + (1 - ball_speed) * 1000.0 - ball_local_speed) * HMI_WIDTH * 2;
+	float real_speed = HMI_DTMS / (600.0 + (1 - ball_speed) * 3000.0 - ball_local_speed) * HMI_WIDTH * 2;
 	if (real_speed > HMI_DTMS / 500.0 * HMI_WIDTH * 2)
 		real_speed = HMI_DTMS / 500.0 * HMI_WIDTH * 2;
 	ball_position += real_speed * ball_direction;
