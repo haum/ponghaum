@@ -48,12 +48,12 @@ void ScoresScreen::animate() {
 		score2.fadeout();
 	}
 
-	if (!ack1 && hmi.btn1.spressed(true)) {
+	if (!ack1 && hmi.btn1.stouched(true)) {
 		ack1 = true;
 		score1.fadeout();
 	}
 
-	if (!ack2 && hmi.btn2.spressed(true)) {
+	if (!ack2 && hmi.btn2.stouched(true)) {
 		ack2 = true;
 		score2.fadeout();
 	}

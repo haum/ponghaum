@@ -9,7 +9,7 @@ void PoweroffScreen::init() {
 
 void PoweroffScreen::animate() {
 	hmi.leds.clear();
-	if (hmi.btn1.spressed() || hmi.btn2.spressed() || hmi.btn_power.spressed()) {
+	if (hmi.btn1.stouched() || hmi.btn2.stouched() || hmi.btn_power.stouched()) {
 		hmi.alim.poweron();
 		game.initscreen();
 	}
