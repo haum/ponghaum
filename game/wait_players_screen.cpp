@@ -39,7 +39,7 @@ void WaitPlayersScreen::animate() {
 			ball_position.loop(false);
 			ball_position.updown(false);
 			ball_position.start();
-			int target = (last_touch == PLAYER2 ? -HMI_WIDTH : HMI_WIDTH);
+			int target = (last_touch == PLAYER1 ? -HMI_WIDTH : HMI_WIDTH);
 			quit_start = ball.get_position();
 			quit_dist = target - quit_start;
 		}

@@ -11,7 +11,7 @@ void PlayingScreen::init() {
 	pad2.init();
 
 	ball_local_speed = 0;
-	if (game.data.last_winner == PLAYER1) {
+	if (game.data.last_winner == PLAYER2) {
 		ball_position = HMI_WIDTH;
 		ball_direction = -1;
 	} else {
