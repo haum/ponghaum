@@ -21,7 +21,7 @@ void PlayingScreen::init() {
 	inhibed_controls = true;
 
 	ball_speed.init();
-	ball_speed.set_duration(42000 / 2);
+	ball_speed.set_duration(10000);
 	ball_speed.start();
 
 	quit = 0;
