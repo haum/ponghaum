@@ -59,7 +59,7 @@ void ScoresScreen::animate() {
 	}
 
 	if (ack1 && ack2) {
-		if (game.data.p1score + game.data.p2score == 9) {
+		if (game.data.p1score == 5 || game.data.p2score == 5) {
 			fct = &GameManager::initscreen;
 		} else {
 			fct = &GameManager::play;

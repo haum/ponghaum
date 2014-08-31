@@ -50,11 +50,15 @@ void PlayingScreen::animate() {
 		if (ball_position < -HMI_WIDTH) {
 			game.data.last_winner = PLAYER2;
 			game.data.p2score += 1;
+			if (game.data.p2score + game.data.p1score >= 5)
+				game.data.p1score = 5 - game.data.p2score;
 			quit = true;
 		}
 		if (ball_position > HMI_WIDTH) {
 			game.data.last_winner = PLAYER1;
 			game.data.p1score += 1;
+			if (game.data.p2score + game.data.p1score >= 5)
+				game.data.p2score = 5 - game.data.p1score;
 			quit = true;
 		}
 

@@ -20,7 +20,7 @@ void ScoreSprite::animate() {
 	anim.animate();
 	animloop.animate();
 	animfadeout.animate();
-	int imax = score * anim * 2 * HMI_WIDTH / 9.0;
+	int imax = score * anim * 2 * HMI_WIDTH / 5.0;
 	unsigned char r, g, b;
 	r = get_reversed() ? 0xff : 0x00;
 	g = get_reversed() ? 0x00 : 0xff;
