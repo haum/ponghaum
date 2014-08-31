@@ -22,7 +22,7 @@ void WaitPlayersScreen::animate() {
 	hmi.leds.clear();
 	ball_position.animate();
 	if (!quit) {
-		ball.set_position(30 * (ball_position * 2 - 1));
+		ball.set_position((HMI_WIDTH - 25) * (ball_position * 2 - 1));
 		if (hmi.btn1.stouched() && pad1.can_fire()) {
 			last_touch = PLAYER1;
 			pad1.fire(20);
