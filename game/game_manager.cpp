@@ -21,7 +21,7 @@ static GameScreen *scr = 0;
 
 GameManager::GameManager() : state(GameState_WAIT_PLAYERS) {
 	scr = &screens.poweroff;
-	sleeptimer.set_duration(1000.f * 60 * 5);
+	sleeptimer.set_duration(1000.f * 60);
 	sleeptimer.start();
 }
 
@@ -37,8 +37,8 @@ void GameManager::animate() {
 	if (hmi.btn1.touched(true) || hmi.btn2.touched(true))
 		sleeptimer.start(); // Restart
 	sleeptimer.animate();
-	if (sleeptimer.get_value() == 1)
-		hmi.alim.poweroff();
+	if (sleeptimer.get_value() == 1 && scr != &screens.wait_players)
+		initscreen();
 }
 
 void GameManager::restart_game() {
