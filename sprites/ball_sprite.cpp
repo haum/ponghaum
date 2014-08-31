@@ -17,21 +17,9 @@ void BallSprite::init_sprite() {
 	queue = false;
 	queue_length = 0;
 	last_position = get_position();
-	flicker1.init();
-	flicker1.loop(true);
-	flicker1.updown(true);
-	flicker1.set_duration(800);
-	flicker1.start();
-	flicker2.init();
-	flicker2.loop(true);
-	flicker2.updown(true);
-	flicker2.set_duration(400);
-	flicker2.start();
 }
 
 void BallSprite::animate() {
-	flicker1.animate();
-	flicker2.animate();
 	if (queue) {
 		queue_length += (get_position() - last_position);
 		queue_length -= queue_length / 10;
@@ -49,7 +37,6 @@ void BallSprite::animate() {
 			else
 				draw(-i, 255 + 12 * i, 120 + 12 * i, 0);
 	}
-	float factor = flicker1.get_value() / 2 + 0.5;
-	draw(0, 0xff * factor, 0xff * factor, 0xff * factor);
+	draw(0, 0xff, 0xff, 0xff);
 	last_position = get_position();
 }
