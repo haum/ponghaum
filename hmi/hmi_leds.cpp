@@ -39,9 +39,9 @@ void HmiLeds::set(int led, unsigned char r, unsigned char g, unsigned char b) {
 		SDL_FillRect(screen, &led_rect, SDL_MapRGB(screen->format, r, g, b));
 	}
 #else
-	fastleds[led + HMI_WIDTH].r = r / 4;
-	fastleds[led + HMI_WIDTH].b = b / 4;
-	fastleds[led + HMI_WIDTH].g = g / 4;
+	fastleds[led + HMI_WIDTH].r = r / 2;
+	fastleds[led + HMI_WIDTH].b = b / 2;
+	fastleds[led + HMI_WIDTH].g = g / 2;
 #endif
 }
 
