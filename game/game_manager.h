@@ -1,6 +1,8 @@
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
 
+#define MAX_POINTS 5
+
 #include "../anim/linear_animator.h"
 
 /** Game phases enumeration **/
@@ -21,6 +23,13 @@ class GameScreen {
 enum GamePlayer {
 	PLAYER1,
 	PLAYER2
+};
+
+/** Game Modes Enumeration **/
+
+enum GameMode {
+	NORMAL,
+	CONQUER
 };
 
 /** Game persistent data **/
@@ -59,6 +68,7 @@ class GameManager {
 		void test_hardware();
 
 		GameData data;
+		GameMode mode;
 
 	private:
 		GameState state; /// Current game phase

@@ -42,9 +42,9 @@ void GameManager::animate() {
 }
 
 void GameManager::restart_game() {
-	data.p1score = 2;
-	data.p2score = 2;
-	show_scores();
+	data.p1score = 0;
+	data.p2score = 0;
+	play();
 }
 
 void GameManager::play() {

@@ -21,7 +21,11 @@ void PlayingScreen::init() {
 	inhibed_controls = true;
 
 	ball_speed.init();
-	ball_speed.set_duration(10000);
+	if (game.mode == CONQUER) {
+		ball_speed.set_duration(10000);
+	} else if (game.mode == NORMAL) {
+		ball_speed.set_duration(21000);
+	}
 	ball_speed.start();
 
 	quit = 0;
@@ -50,15 +54,15 @@ void PlayingScreen::animate() {
 		if (ball_position < -HMI_WIDTH) {
 			game.data.last_winner = PLAYER2;
 			game.data.p2score += 1;
-			if (game.data.p2score + game.data.p1score >= 5)
-				game.data.p1score = 5 - game.data.p2score;
+			if (game.mode == NORMAL && game.data.p2score + game.data.p1score >= MAX_POINTS)
+				game.data.p1score = MAX_POINTS - game.data.p2score;
 			quit = true;
 		}
 		if (ball_position > HMI_WIDTH) {
 			game.data.last_winner = PLAYER1;
 			game.data.p1score += 1;
-			if (game.data.p2score + game.data.p1score >= 5)
-				game.data.p2score = 5 - game.data.p1score;
+			if (game.mode == CONQUER && game.data.p2score + game.data.p1score >= MAX_POINTS)
+				game.data.p2score = MAX_POINTS - game.data.p1score;
 			quit = true;
 		}
 
