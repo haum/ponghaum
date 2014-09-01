@@ -22,7 +22,8 @@ void WaitPlayersScreen::animate() {
 	hmi.leds.clear();
 	ball_position.animate();
 	if (!quit) {
-		ball.set_position(30 * (ball_position * 2 - 1));
+		bool start = false;
+		ball.set_position((HMI_WIDTH - 25) * (ball_position * 2 - 1));
 		if (hmi.btn1.stouched() && pad1.can_fire()) {
 			last_touch = PLAYER1;
 			pad1.fire(20);
@@ -32,8 +33,15 @@ void WaitPlayersScreen::animate() {
 			pad2.fire(20);
 		}
 		if (hmi.btn1.dpressed(true) && hmi.btn2.dpressed(true)) {
-			game.test_hardware();
-		} else if (hmi.btn1.slpressed(true) && hmi.btn2.slpressed(true)) {
+			game.mode = CONQUER;
+			start = true;
+			//game.test_hardware();
+		} else if (hmi.btn1.slpressed(true) && hmi.btn2.slpressed(true) ) {
+			game.mode = NORMAL;
+			start = true;
+		}
+		if (start) {
+			if (game.mode == CONQUER) hmi.log("Conqueror !");
 			quit = true;
 			ball_position.set_duration(500);
 			ball_position.loop(false);

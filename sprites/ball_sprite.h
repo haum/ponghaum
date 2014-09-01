@@ -31,9 +31,6 @@ class BallSprite : public Sprite {
 
 		float queue_length; /// Queue length
 		float last_position; /// Registers last position to compute speed
-
-		LinearAnimator flicker1; /// Flicker 1 animation
-		LinearAnimator flicker2; /// Flicker 2 animation
 };
 
 #endif

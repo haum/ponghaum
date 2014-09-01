@@ -1,5 +1,6 @@
 #include "score_sprite.h"
 #include "../hmi/hmi_manager.h"
+#include "../game/game_manager.h"
 
 void ScoreSprite::init_sprite() {
 	anim.init();
@@ -20,7 +21,7 @@ void ScoreSprite::animate() {
 	anim.animate();
 	animloop.animate();
 	animfadeout.animate();
-	int imax = score * anim * 2 * HMI_WIDTH / 9.0;
+	int imax = score * anim * 2 * HMI_WIDTH / MAX_POINTS;
 	unsigned char r, g, b;
 	r = get_reversed() ? 0xff : 0x00;
 	g = get_reversed() ? 0x00 : 0xff;
