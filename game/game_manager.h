@@ -61,6 +61,9 @@ class GameManager {
 		/** Launch init screen **/
 		void initscreen();
 
+		/** Launch rainbow screen **/
+		void rainbow();
+
 		/** Show scores **/
 		void show_scores();
 

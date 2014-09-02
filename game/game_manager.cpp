@@ -5,6 +5,7 @@
 #include "wait_players_screen.h"
 #include "test_hardware_screen.h"
 #include "playing_screen.h"
+#include "rainbow_screen.h"
 #include "scores_screen.h"
 
 GameManager game;
@@ -14,6 +15,7 @@ static struct {
 	WaitPlayersScreen wait_players;
 	TestHardwareScreen test_hardware;
 	PlayingScreen playing;
+	RainbowScreen rainbow;
 	ScoresScreen scores;
 } screens;
 
@@ -54,6 +56,11 @@ void GameManager::play() {
 
 void GameManager::initscreen() {
 	scr = &screens.wait_players;
+	scr->init();
+}
+
+void GameManager::rainbow() {
+	scr = &screens.rainbow;
 	scr->init();
 }
 
