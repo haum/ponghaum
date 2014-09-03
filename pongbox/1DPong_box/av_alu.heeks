@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<HeeksCAD_Document>
+    <Program machine="LinuxCNC" output_file="/tmp/test.ngc" output_file_name_follows_data_file_name="1" program="# coding=UTF8&#x0A;# No troubled Microsoft Windows detected&#x0A;import sys&#x0A;sys.path.insert(0,&apos;/usr/lib/heekscnc/&apos;)&#x0A;import math&#x0A;import area&#x0A;area.set_units(1)&#x0A;import kurve_funcs&#x0A;from depth_params import depth_params as depth_params&#x0A;&#x0A;from nc.nc import *&#x0A;from nc.emc2b import *&#x0A;&#x0A;output(&apos;/home/jerome/Documents/Haum/1DPong_box/av_alu.ngc&apos;)&#x0A;program_begin(1, &apos;Programme CN 1&apos;)&#x0A;absolute()&#x0A;metric()&#x0A;set_plane(0)&#x0A;&#x0A;#(3 mm Fraise à rainurer)&#x0A;tool_defn( 1, &apos;3 mm Fraise à rainurer&apos;, {&apos;corner radius&apos;:0, &apos;cutting edge angle&apos;:0, &apos;cutting edge height&apos;:12, &apos;diameter&apos;:3, &apos;flat radius&apos;:0, &apos;material&apos;:1, &apos;tool length offset&apos;:127, &apos;type&apos;:3, &apos;name&apos;:&apos;3 mm Fraise à rainurer&apos;})&#x0A;#(4 mm Foret)&#x0A;tool_defn( 2, &apos;4 mm Foret&apos;, {&apos;corner radius&apos;:0, &apos;cutting edge angle&apos;:59, &apos;cutting edge height&apos;:50.8, &apos;diameter&apos;:4, &apos;flat radius&apos;:0, &apos;material&apos;:1, &apos;tool length offset&apos;:100, &apos;type&apos;:0, &apos;name&apos;:&apos;4 mm Foret&apos;})&#x0A;#(6 mm Fraise à rainurer)&#x0A;tool_defn( 3, &apos;6 mm Fraise à rainurer&apos;, {&apos;corner radius&apos;:0, &apos;cutting edge angle&apos;:0, &apos;cutting edge height&apos;:30, &apos;diameter&apos;:6, &apos;flat radius&apos;:0, &apos;material&apos;:1, &apos;tool length offset&apos;:100, &apos;type&apos;:3, &apos;name&apos;:&apos;6 mm Fraise à rainurer&apos;})&#x0A;tool_change( id=1)&#x0A;spindle(7000)&#x0A;feedrate_hv(500, 100)&#x0A;flush_nc()&#x0A;depthparams = depth_params(float(10), float(2), float(0), float(0.2), float(0), float(0), float(-0.9), None)&#x0A;tool_diameter = float(3)&#x0A;cutting_edge_angle = float(0)&#x0A;roll_radius = float(0)&#x0A;offset_extra = 0&#x0A;comment(&apos;ENTITIES ext_piece&apos;)&#x0A;curve = area.Curve()&#x0A;curve.append(area.Point(44, 45))&#x0A;curve.append(area.Point(140, 45))&#x0A;curve.append(area.Point(140, 225))&#x0A;curve.append(area.Point(44, 225))&#x0A;curve.append(area.Point(44, 45))&#x0A;&#x0A;kurve_funcs.set_good_start_point(curve, True)&#x0A;roll_on = &apos;auto&apos;&#x0A;roll_off = &apos;auto&apos;&#x0A;extend_at_start= 0&#x0A;extend_at_end= 0&#x0A;lead_in_line_len= 0&#x0A;lead_out_line_len= 0&#x0A;kurve_funcs.profile(curve, &apos;right&apos;, tool_diameter/2, offset_extra, roll_radius, roll_on, roll_off, depthparams, extend_at_start,extend_at_end,lead_in_line_len,lead_out_line_len )&#x0A;absolute()&#x0A;program_end()&#x0A;" units="1" ProgramPathControlMode="3" ProgramMotionBlendingTolerance="0.0001" ProgramNaiveCamTolerance="0.0001" title_from_id="1" id="1">
+        <Tools>
+            <Tool title="3 mm Fraise à rainurer" tool_number="1" id="5">
+                <params diameter="3" tool_length_offset="127" automatically_generate_title="1" material="1" type="slot_cutter" corner_radius="0" flat_radius="0" cutting_edge_angle="0" cutting_edge_height="12" />
+            </Tool>
+            <Tool title="4 mm Foret" tool_number="2" id="6">
+                <params diameter="4" tool_length_offset="100" automatically_generate_title="1" material="1" type="drill" corner_radius="0" flat_radius="0" cutting_edge_angle="59" cutting_edge_height="50.8" />
+            </Tool>
+            <Tool title="6 mm Fraise à rainurer" tool_number="3" id="7">
+                <params diameter="6" tool_length_offset="100" automatically_generate_title="1" material="1" type="slot_cutter" corner_radius="0" flat_radius="0" cutting_edge_angle="0" cutting_edge_height="30" />
+            </Tool>
+        </Tools>
+        <Patterns />
+        <Surfaces />
+        <Stocks />
+        <Operations>
+            <Profile sketch="16" active="0" tool_number="1" pattern="0" surface="0" title_from_id="0" title="power" id="1">
+                <params side="-1" cut_mode="0" auto_roll_on="1" auto_roll_off="1" roll_radius="0" start_given="0" end_given="0" sort_sketches="1" extend_at_start="0" extend_at_end="0" lead_in_line_len="0" lead_out_line_len="0" offset_extra="0" do_finishing_pass="0" only_finishing_pass="0" finishing_feed_rate="100" finish_cut_mode="0" finishing_step_down="1" />
+                <depthop clear="10" down="0.2" userdepths="" startdepth="0" depth="-0.9" r="2" />
+                <speedop hfeed="500" vfeed="100" spin="7000" />
+                <Tags />
+            </Profile>
+            <Profile sketch="23" active="0" tool_number="1" pattern="0" surface="0" title_from_id="0" title="jacks" id="4">
+                <params side="-1" cut_mode="0" auto_roll_on="1" auto_roll_off="1" roll_radius="0" start_given="0" end_given="0" sort_sketches="1" extend_at_start="0" extend_at_end="0" lead_in_line_len="0" lead_out_line_len="0" offset_extra="0" do_finishing_pass="0" only_finishing_pass="0" finishing_feed_rate="100" finish_cut_mode="0" finishing_step_down="1" />
+                <depthop clear="10" down="0.2" userdepths="" startdepth="0" depth="-0.9" r="2" />
+                <speedop hfeed="500" vfeed="100" spin="7000" />
+                <Tags />
+            </Profile>
+            <Profile sketch="36" active="0" tool_number="1" pattern="0" surface="0" title_from_id="0" title="db9" id="3">
+                <params side="-1" cut_mode="0" auto_roll_on="1" auto_roll_off="1" roll_radius="0" start_given="0" end_given="0" sort_sketches="1" extend_at_start="0" extend_at_end="0" lead_in_line_len="0" lead_out_line_len="0" offset_extra="0" do_finishing_pass="0" only_finishing_pass="0" finishing_feed_rate="100" finish_cut_mode="0" finishing_step_down="1" />
+                <depthop clear="10" down="0.2" userdepths="" startdepth="0" depth="-0.9" r="2" />
+                <speedop hfeed="500" vfeed="100" spin="7000" />
+                <Tags />
+            </Profile>
+            <Profile sketch="12" active="1" tool_number="1" pattern="0" surface="0" title_from_id="0" title="exterieur" id="2">
+                <params side="1" cut_mode="0" auto_roll_on="1" auto_roll_off="1" roll_radius="0" start_given="0" end_given="0" sort_sketches="1" extend_at_start="0" extend_at_end="0" lead_in_line_len="0" lead_out_line_len="0" offset_extra="0" do_finishing_pass="0" only_finishing_pass="0" finishing_feed_rate="100" finish_cut_mode="0" finishing_step_down="1" />
+                <depthop clear="10" down="0.2" userdepths="" startdepth="0" depth="-0.9" r="2" />
+                <speedop hfeed="500" vfeed="100" spin="7000" />
+                <Tags />
+            </Profile>
+        </Operations>
+        <nccode edited="0" id="1">
+            <ncblock id="0">
+                <text col="comment">(Created with emc2b post processor 2014/08/28 15:14)</text>
+            </ncblock>
+            <ncblock id="0">
+                <text col="comment">(tool change to 3 mm Fraise à rainurer)</text>
+            </ncblock>
+            <ncblock id="0">
+                <text col="tool">T1</text>
+                <text> </text>
+                <text col="misc">M06</text>
+                <text> </text>
+                <text col="rapid">G43</text>
+                <path col="rapid">
+                    <line tool_number="0" x="0" y="0" z="0" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text>G17</text>
+                <text> </text>
+                <text>G90</text>
+                <text> </text>
+                <text col="prep">G21</text>
+            </ncblock>
+            <ncblock id="0">
+                <text col="comment">(ENTITIES ext_piece)</text>
+            </ncblock>
+            <ncblock id="0">
+                <text col="rapid">G00</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y135</text>
+                <text> </text>
+                <text col="axis">S7000</text>
+                <text> </text>
+                <text col="misc">M03</text>
+                <path col="rapid">
+                    <line tool_number="0" x="42.5" y="135" z="0" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">Z2</text>
+                <path col="rapid">
+                    <line tool_number="0" x="42.5" y="135" z="2" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">Z-0.18</text>
+                <text> </text>
+                <text col="axis">F100</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">F500</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="45" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <text> </text>
+                <text col="axis">I1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="1.5" j="0" k="0" d="1" tool_number="0" x="44" y="43.5" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="140" y="43.5" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J1.5</text>
+                <path col="feed">
+                    <arc i="0" j="1.5" k="0" d="1" tool_number="0" x="141.5" y="45" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <path col="feed">
+                    <line tool_number="0" x="141.5" y="225" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <text> </text>
+                <text col="axis">I-1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="-1.5" j="0" k="0" d="1" tool_number="0" x="140" y="226.5" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="44" y="226.5" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J-1.5</text>
+                <path col="feed">
+                    <arc i="0" j="-1.5" k="0" d="1" tool_number="0" x="42.5" y="225" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y135</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.18" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">Z-0.36</text>
+                <text> </text>
+                <text col="axis">F100</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">F500</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="45" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <text> </text>
+                <text col="axis">I1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="1.5" j="0" k="0" d="1" tool_number="0" x="44" y="43.5" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="140" y="43.5" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J1.5</text>
+                <path col="feed">
+                    <arc i="0" j="1.5" k="0" d="1" tool_number="0" x="141.5" y="45" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <path col="feed">
+                    <line tool_number="0" x="141.5" y="225" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <text> </text>
+                <text col="axis">I-1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="-1.5" j="0" k="0" d="1" tool_number="0" x="140" y="226.5" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="44" y="226.5" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J-1.5</text>
+                <path col="feed">
+                    <arc i="0" j="-1.5" k="0" d="1" tool_number="0" x="42.5" y="225" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y135</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.36" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">Z-0.54</text>
+                <text> </text>
+                <text col="axis">F100</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">F500</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="45" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <text> </text>
+                <text col="axis">I1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="1.5" j="0" k="0" d="1" tool_number="0" x="44" y="43.5" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="140" y="43.5" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J1.5</text>
+                <path col="feed">
+                    <arc i="0" j="1.5" k="0" d="1" tool_number="0" x="141.5" y="45" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <path col="feed">
+                    <line tool_number="0" x="141.5" y="225" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <text> </text>
+                <text col="axis">I-1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="-1.5" j="0" k="0" d="1" tool_number="0" x="140" y="226.5" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="44" y="226.5" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J-1.5</text>
+                <path col="feed">
+                    <arc i="0" j="-1.5" k="0" d="1" tool_number="0" x="42.5" y="225" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y135</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.54" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">Z-0.72</text>
+                <text> </text>
+                <text col="axis">F100</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">F500</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="45" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <text> </text>
+                <text col="axis">I1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="1.5" j="0" k="0" d="1" tool_number="0" x="44" y="43.5" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="140" y="43.5" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J1.5</text>
+                <path col="feed">
+                    <arc i="0" j="1.5" k="0" d="1" tool_number="0" x="141.5" y="45" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <path col="feed">
+                    <line tool_number="0" x="141.5" y="225" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <text> </text>
+                <text col="axis">I-1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="-1.5" j="0" k="0" d="1" tool_number="0" x="140" y="226.5" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="44" y="226.5" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J-1.5</text>
+                <path col="feed">
+                    <arc i="0" j="-1.5" k="0" d="1" tool_number="0" x="42.5" y="225" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y135</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.72" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">Z-0.9</text>
+                <text> </text>
+                <text col="axis">F100</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">F500</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="45" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <text> </text>
+                <text col="axis">I1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="1.5" j="0" k="0" d="1" tool_number="0" x="44" y="43.5" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y43.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="140" y="43.5" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y45</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J1.5</text>
+                <path col="feed">
+                    <arc i="0" j="1.5" k="0" d="1" tool_number="0" x="141.5" y="45" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X141.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <path col="feed">
+                    <line tool_number="0" x="141.5" y="225" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X140</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <text> </text>
+                <text col="axis">I-1.5</text>
+                <text> </text>
+                <text col="axis">J0</text>
+                <path col="feed">
+                    <arc i="-1.5" j="0" k="0" d="1" tool_number="0" x="140" y="226.5" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X44</text>
+                <text> </text>
+                <text col="axis">Y226.5</text>
+                <path col="feed">
+                    <line tool_number="0" x="44" y="226.5" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G03</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y225</text>
+                <text> </text>
+                <text col="axis">I0</text>
+                <text> </text>
+                <text col="axis">J-1.5</text>
+                <path col="feed">
+                    <arc i="0" j="-1.5" k="0" d="1" tool_number="0" x="42.5" y="225" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="feed">G01</text>
+                <text> </text>
+                <text col="axis">X42.5</text>
+                <text> </text>
+                <text col="axis">Y135</text>
+                <path col="feed">
+                    <line tool_number="0" x="42.5" y="135" z="-0.9" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="rapid">G00</text>
+                <text> </text>
+                <text col="axis">Z10</text>
+                <path col="rapid">
+                    <line tool_number="0" x="42.5" y="135" z="10" />
+                </path>
+            </ncblock>
+            <ncblock id="0">
+                <text col="tool">T0</text>
+                <text> </text>
+                <text col="misc">M06</text>
+                <text> </text>
+                <text col="misc">M02</text>
+            </ncblock>
+        </nccode>
+    </Program>
+    <Sketch title="ENTITIES ext_piece" title_from_id="0" id="12">
+        <Line col="0" sx="44" sy="45" sz="0" ex="140" ey="45" ez="0" id="41" />
+        <Line col="0" sx="140" sy="225" sz="0" ex="44" ey="225" ez="0" id="42" />
+        <Line col="0" sx="140" sy="45" sz="0" ex="140" ey="225" ez="0" id="43" />
+        <Line col="0" sx="44" sy="225" sz="0" ex="44" ey="45" ez="0" id="44" />
+    </Sketch>
+    <Sketch title="power_bp" title_from_id="0" id="16">
+        <Circle col="65535" r="3.5" cx="68" cy="105" cz="0" ax="0" ay="0" az="-1" title_from_id="1" id="14" />
+        <Circle col="65535" r="2.5" cx="68" cy="75" cz="0" ax="0" ay="0" az="-1" title_from_id="1" id="15" />
+    </Sketch>
+    <Sketch title="jacks" title_from_id="0" id="23">
+        <Circle col="65535" r="5.5" cx="116" cy="165" cz="0" ax="0" ay="0" az="-1" title_from_id="1" id="21" />
+        <Circle col="65535" r="5.5" cx="116" cy="195" cz="0" ax="0" ay="0" az="-1" title_from_id="1" id="22" />
+    </Sketch>
+    <Sketch title="Esquisse" title_from_id="1" id="36">
+        <Line col="0" sx="121" sy="83.368604552" sz="0" ex="121" ey="96.631396861" ez="0" id="156" />
+        <Arc cx="119.250000001" cy="96.631395845" cz="0" ax="0" ay="0" az="1" col="0" sx="121" sy="96.631394829" sz="0" ex="119.580476208" ey="98.349908422" ez="0" id="157" />
+        <Line col="0" sx="119.580476183" sy="98.349908426" sz="0" ex="117.6" ey="98.730769231" ez="0" id="158" />
+        <Line col="0" sx="117.6" sy="98.730769231" sz="0" ex="117.6" ey="102.5" ez="0" id="159" />
+        <Arc cx="116" cy="102.5" cz="0" ax="0" ay="0" az="1" col="0" sx="117.6" sy="102.5" sz="0" ex="114.4" ey="102.5" ez="0" id="160" />
+        <Line col="0" sx="114.4" sy="102.5" sz="0" ex="114.4" ey="99.346153846" ez="0" id="161" />
+        <Line col="0" sx="114.4" sy="99.346153846" sz="0" ex="113.080482939" ey="99.599907127" ez="0" id="162" />
+        <Arc cx="112.75" cy="97.881395845" cz="0" ax="0" ay="0" az="1" col="0" sx="113.080482772" sy="99.599907159" sz="0" ex="111" ey="97.881395448" ez="0" id="163" />
+        <Line col="0" sx="111" sy="97.881396241" sz="0" ex="111" ey="82.118604552" ez="0" id="164" />
+        <Arc cx="112.75" cy="82.118604155" cz="0" ax="0" ay="0" az="1" col="0" sx="111" sy="82.118604552" sz="0" ex="113.080482939" ey="80.400092873" ez="0" id="165" />
+        <Line col="0" sx="113.080483111" sy="80.400092906" sz="0" ex="114.4" ey="80.653846154" ez="0" id="166" />
+        <Line col="0" sx="114.4" sy="80.653846154" sz="0" ex="114.4" ey="77.499999326" ez="0" id="167" />
+        <Arc cx="116" cy="77.5" cz="0" ax="0" ay="0" az="1" col="0" sx="114.4" sy="77.500000674" sz="0" ex="117.6" ey="77.500000477" ez="0" id="168" />
+        <Line col="0" sx="117.6" sy="77.500000892" sz="0" ex="117.6" ey="81.269230769" ez="0" id="169" />
+        <Line col="0" sx="117.6" sy="81.269230769" sz="0" ex="119.580489704" ey="81.650094174" ez="0" id="170" />
+        <Arc cx="119.25" cy="83.368604155" cz="0" ax="0" ay="0" az="1" col="0" sx="119.580489721" sy="81.650094177" sz="0" ex="121" ey="83.368603759" ez="0" id="171" />
+    </Sketch>
+</HeeksCAD_Document>
