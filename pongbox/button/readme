@@ -1,0 +1,16 @@
+Les fichiers de ce repertoire sont classés comme suit:
+
+button.dxf : dessin du bouton avec le logo
+
+ensuite deux version de bouton
+1er
+    button.fcstd : fichier freeCAD
+    deux fichiers stl (de la base vers le haut)
+        logo.stl
+        bouton.stl
+2eme
+button2.fcstd
+    deux fichiers stl (de la base vers le haut
+        bouton2.stl
+        logo2.stl
+
