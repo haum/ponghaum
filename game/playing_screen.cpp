@@ -37,7 +37,7 @@ void PlayingScreen::animate() {
 	hmi.leds.clear();
 	ball_speed.animate();
 	// Compute ball speed and new position
-	float real_speed = HMI_DTMS / (600.0 + (1 - ball_speed) * 4000.0 - ball_local_speed) * HMI_WIDTH * 2;
+	float real_speed = HMI_DTMS / (800.0 + (1 - ball_speed) * 4000.0 - ball_local_speed) * HMI_WIDTH * 2;
 	if (real_speed > HMI_DTMS / 500.0 * HMI_WIDTH * 2)
 		real_speed = HMI_DTMS / 500.0 * HMI_WIDTH * 2;
 	ball_position += real_speed * ball_direction;
