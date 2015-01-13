@@ -54,7 +54,7 @@ void PlayingScreen::animate() {
 		if (ball_position < -HMI_WIDTH) {
 			game.data.last_winner = PLAYER2;
 			game.data.p2score += 1;
-			if (game.mode == NORMAL && game.data.p2score + game.data.p1score >= MAX_POINTS)
+			if (game.mode == CONQUER && game.data.p2score + game.data.p1score >= MAX_POINTS)
 				game.data.p1score = MAX_POINTS - game.data.p2score;
 			quit = true;
 		}
