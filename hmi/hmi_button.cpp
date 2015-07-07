@@ -68,14 +68,14 @@ void HmiButton::compute(bool value) {
 		case HmiButtonState_NOTHING:
 			if (timer < 0) {
 				timer = 0;
-			} else if (timer == 8) {
+			} else if (timer == 4) {
 				timer = 0;
 				state = HmiButtonState_HT1;
 			}
 			break;
 
 		case HmiButtonState_HT1:
-			if (timer == 16) {
+			if (timer == 8) {
 				state = HmiButtonState_FT1;
 				press = HmiButtonPress_PRESSED1;
 				timer = 0;
