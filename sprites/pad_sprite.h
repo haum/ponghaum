@@ -2,7 +2,6 @@
 #define PAD_SPRITE_H
 
 #include "sprite.h"
-#include "../anim/linear_animator.h"
 
 class PadSprite : public Sprite {
 	public:

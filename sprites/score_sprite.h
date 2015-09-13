@@ -2,7 +2,6 @@
 #define SCORE_SPRITE_H
 
 #include "sprite.h"
-#include "../anim/linear_animator.h"
 
 class ScoreSprite : public Sprite {
 	public:

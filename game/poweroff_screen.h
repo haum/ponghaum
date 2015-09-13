@@ -4,6 +4,10 @@
 #include "game_manager.h"
 
 class PoweroffScreen : public GameScreen {
+	private:
+		/** Power-on detector helper **/
+		bool was_powered;
+
 	public:
 		/** Init function **/
 		virtual void init();

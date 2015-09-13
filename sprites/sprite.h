@@ -1,6 +1,8 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include "../khroma.h"
+
 class Sprite {
 	public:
 		/** Simple constructor **/

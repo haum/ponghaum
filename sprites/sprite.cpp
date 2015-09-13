@@ -1,5 +1,4 @@
 #include "sprite.h"
-#include "../hmi/hmi_manager.h"
 
 Sprite::Sprite() : linked_to(0), reversed(false), position(0) {
 }
@@ -43,5 +42,5 @@ bool Sprite::get_reversed() {
 
 void Sprite::draw(int led, unsigned char r, unsigned char g, unsigned char b) {
 	if (reversed) led = -led;
-	hmi.leds.set(get_abs_position() + led, r, g, b);
+	khroma.leds.set_rgb(get_abs_position() + led, r, g, b);
 }

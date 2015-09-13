@@ -1,16 +1,19 @@
 #include "poweroff_screen.h"
 
 #include "game_manager.h"
-#include "../hmi/hmi_manager.h"
 
 void PoweroffScreen::init() {
-	hmi.alim.poweroff();
+	khroma.power.poweroff();
+	was_powered = false;
 }
 
 void PoweroffScreen::animate() {
-	hmi.leds.clear();
-	if (hmi.btn1.stouched() || hmi.btn2.stouched() || hmi.btn_power.stouched()) {
-		hmi.alim.poweron();
+	bool poweron = false;
+	if (!was_powered && khroma.power.is_powered())
+		poweron = true;
+	was_powered = khroma.power.is_powered();
+	khroma.leds.clear();
+	if (khroma.btn1.stouched() || khroma.btn2.stouched() || poweron) {
 		game.initscreen();
 	}
 }

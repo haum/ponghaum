@@ -2,7 +2,6 @@
 #define BALL_SPRITE_H
 
 #include "sprite.h"
-#include "../anim/linear_animator.h"
 
 class BallSprite : public Sprite {
 	public:

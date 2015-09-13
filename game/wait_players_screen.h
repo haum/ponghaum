@@ -4,7 +4,6 @@
 #include "game_manager.h"
 #include "../sprites/ball_sprite.h"
 #include "../sprites/pad_sprite.h"
-#include "../anim/linear_animator.h"
 
 class WaitPlayersScreen : public GameScreen {
 	public:

@@ -3,7 +3,7 @@
 
 #define MAX_POINTS 5
 
-#include "../anim/linear_animator.h"
+#include "../khroma.h"
 
 /** Game phases enumeration **/
 enum GameState {
@@ -42,6 +42,10 @@ struct GameData {
 
 /** Class that manages the game **/
 class GameManager {
+	private:
+		/** Power-on detector helper **/
+		bool was_powered;
+
 	public:
 		/** Constructor **/
 		GameManager();

@@ -2,7 +2,6 @@
 #define TEST_HARDWARE_SCREEN_H
 
 #include "game_manager.h"
-#include "../anim/linear_animator.h"
 
 class TestHardwareScreen : public GameScreen {
 	public:

@@ -12,7 +12,7 @@ Le système utilise 150 leds en bande commandées par la bibliothèque FastLED e
 
 ### Paramétrage
 
-Le paramétrage des pins de l'arduino est réalisé dans la première partie du fichier Makefile.arduino avec les constances ARDUINO_PINS__*.
+Le paramétrage des pins de l'arduino est réalisé dans le fichier khroma.h avec les constances PINS__*.
 
 Par défaut, les boutons sont reliés aux entrées 2 et 3 et le bandeau de LEDs est relié à la sortie 10.
 L'arduino est reliée à une alimentation ATX. Un bouton poussoir POWERSTOP (4) permet de commander l'extinction, une broche POWERCMD (5) est reliée à la commande d'allumage de l'ATX (fil vert) et une broche POWERGOOD (6) permet de détecter l'allumage de l'alimentation.
@@ -26,17 +26,13 @@ git submodule init
 git submodule update
 ```
 
-Ensuite utiliser le Makefile pour Arduino :
+Ensuite il est possible d'utiliser le Makefile pour envoyer le programme sur Arduino :
 
 ```
-make -f Makefile.arduino
+make upload
 ```
 
-Le téléchargement dans l'Arduino se fait par :
-
-```
-make -f Makefile.arduino upload
-```
+Testé avec Arduino 1.0.6
 
 Have fun :)
 
@@ -66,13 +62,15 @@ Il faut néanmoins garder en tête que la cible principale est un microcontrôle
 
 ### Compilation
 
-Un Makefile permet de construire l'émulateur PC :
+Le Makefile permet de construire l'émulateur PC :
 
 ```
-make -f Makefile.pc
+make pc
 ```
 
 Les dépendances sont seulement pthread et SDL2.
+
+Attention, la variable d'environnement ARDUINO_DIR doit être non nulle (même si elle n'est pas rellement utilisée dans ce cas)
 
 ## Licence
 

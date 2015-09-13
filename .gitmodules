@@ -4,3 +4,6 @@
 [submodule "_submodules/arduino-libs/FastLED"]
 	path = _submodules/arduino-libs/FastLED
 	url = https://github.com/FastLED/FastLED.git
+[submodule "_submodules/arduino-libs/PolychrHAUM"]
+	path = _submodules/arduino-libs/PolychrHAUM
+	url = https://github.com/haum/polychrhaum

@@ -1,5 +1,4 @@
 #include "game_manager.h"
-#include "../hmi/hmi_manager.h"
 
 #include "poweroff_screen.h"
 #include "wait_players_screen.h"
@@ -34,9 +33,10 @@ void GameManager::init() {
 
 void GameManager::animate() {
 	scr->animate();
-	if (hmi.btn_power.slpressed())
+	if (was_powered && !khroma.power.is_powered())
 		init();
-	if (hmi.btn1.touched(true) || hmi.btn2.touched(true))
+	was_powered = khroma.power.is_powered();
+	if (khroma.btn1.touched(true) || khroma.btn2.touched(true))
 		sleeptimer.start(); // Restart
 	sleeptimer.animate();
 	if (sleeptimer.get_value() == 1 && scr != &screens.wait_players)

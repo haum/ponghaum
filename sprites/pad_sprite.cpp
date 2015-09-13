@@ -1,5 +1,4 @@
 #include "pad_sprite.h"
-#include "../hmi/hmi_manager.h"
 
 void PadSprite::init_sprite() {
 	lightning.init();
@@ -24,6 +23,6 @@ void PadSprite::animate() {
 	r = get_reversed() ? 0xff : 0x00;
 	g = get_reversed() ? 0x00 : 0xff;
 	b = get_reversed() ? 0xff : 0xff;
-	for (int i = HMI_WIDTH; i > HMI_WIDTH - imax; --i)
+	for (int i = khroma.get_halfsize(); i > khroma.get_halfsize() - imax; --i)
 		draw(i, r * lightning, g * lightning, b * lightning);
 }

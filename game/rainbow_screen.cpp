@@ -1,7 +1,6 @@
 #include "rainbow_screen.h"
 
 #include <stdint.h>
-#include "../hmi/hmi_manager.h"
 
 static uint8_t rainbow(uint16_t in) {
 	while (in > 1536) in -= 1536;
@@ -20,11 +19,11 @@ void RainbowScreen::init() {
 }
 
 void RainbowScreen::animate() {
-	hmi.leds.clear();
+	khroma.leds.clear();
 	anim.animate();
 
-	for (int i = -HMI_WIDTH; i < HMI_WIDTH; ++i) {
-		hmi.leds.set(
+	for (int i = -khroma.get_halfsize(); i < khroma.get_halfsize(); ++i) {
+		khroma.leds.set_rgb(
 			i,
 			rainbow(i + anim*1536),
 			rainbow(i + 512 + anim*1536),
@@ -32,7 +31,7 @@ void RainbowScreen::animate() {
 		);
 	}
 
-	if (hmi.btn1.touched(true) && hmi.btn2.touched(true)) {
+	if (khroma.btn1.touched(true) && khroma.btn2.touched(true)) {
 		game.initscreen();
 	}
 }
