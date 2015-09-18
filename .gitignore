@@ -1,5 +1,4 @@
 build-*
-Makefile
-ponghaum-pc
+polychrhaum-pc
 .*
 *~
