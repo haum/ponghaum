@@ -62,7 +62,7 @@ Il faut néanmoins garder en tête que la cible principale est un microcontrôle
 
 ### Compilation
 
-Le Makefile permet de construire l'émulateur PC :
+Le Makefile permet de construire l'émulateur PC (bibliothèque SDL2 nécessaire) :
 
 ```
 make pc
