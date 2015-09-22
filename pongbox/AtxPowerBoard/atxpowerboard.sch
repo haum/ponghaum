@@ -1,0 +1,343 @@
+EESchema Schematic File Version 2
+LIBS:atxpowerboard-rescue
+LIBS:atxpowerboard-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "ATX power Board"
+Date "2015-09-22"
+Rev ""
+Comp "Haum.org"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L CONN_2 P2
+U 1 1 548749B8
+P 5400 4250
+F 0 "P2" V 5350 4250 40  0000 C CNN
+F 1 "5V" V 5450 4250 40  0000 C CNN
+F 2 "Connect:bornier2" H 5400 4250 60  0001 C CNN
+F 3 "" H 5400 4250 60  0000 C CNN
+	1    5400 4250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_2 P3
+U 1 1 548749CB
+P 6450 4250
+F 0 "P3" V 6400 4250 40  0000 C CNN
+F 1 "12V" V 6500 4250 40  0000 C CNN
+F 2 "Connect:bornier2" H 6450 4250 60  0001 C CNN
+F 3 "" H 6450 4250 60  0000 C CNN
+	1    6450 4250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L LED-RESCUE-atxpowerboard D1
+U 1 1 54874A2E
+P 4450 4450
+F 0 "D1" H 4450 4550 50  0000 C CNN
+F 1 "LED" H 4450 4350 50  0000 C CNN
+F 2 "LEDs:LED-5MM" H 4450 4450 60  0001 C CNN
+F 3 "~" H 4450 4450 60  0000 C CNN
+	1    4450 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 2750 4300 2750
+Wire Wire Line
+	4150 2450 4150 2750
+Wire Wire Line
+	4150 2650 4300 2650
+Wire Wire Line
+	5100 2650 5300 2650
+Wire Wire Line
+	5300 2650 5300 2450
+Wire Wire Line
+	5300 2450 4150 2450
+Connection ~ 4150 2650
+Text Label 4200 2450 0    60   ~ 0
+3V3
+Wire Wire Line
+	4300 2850 3750 2850
+Wire Wire Line
+	3750 2850 3750 2950
+$Comp
+L GND-RESCUE-atxpowerboard #PWR01
+U 1 1 548776B4
+P 3750 2950
+F 0 "#PWR01" H 3750 2950 30  0001 C CNN
+F 1 "GND" H 3750 2880 30  0001 C CNN
+F 2 "" H 3750 2950 60  0000 C CNN
+F 3 "" H 3750 2950 60  0000 C CNN
+	1    3750 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND-RESCUE-atxpowerboard #PWR02
+U 1 1 548776C3
+P 5550 2950
+F 0 "#PWR02" H 5550 2950 30  0001 C CNN
+F 1 "GND" H 5550 2880 30  0001 C CNN
+F 2 "" H 5550 2950 60  0000 C CNN
+F 3 "" H 5550 2950 60  0000 C CNN
+	1    5550 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 2950 5550 2850
+Wire Wire Line
+	5550 2850 5100 2850
+$Comp
+L CONN_1 P9
+U 1 1 548776EC
+P 7075 3025
+F 0 "P9" H 7155 3025 40  0000 L CNN
+F 1 "CONN_1" H 7075 3080 30  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 7075 3025 60  0001 C CNN
+F 3 "" H 7075 3025 60  0000 C CNN
+	1    7075 3025
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 2950 4050 2950
+Text Label 4050 2950 0    60   ~ 0
+5V
+Wire Wire Line
+	5100 2950 5400 2950
+Text Label 5400 2950 2    60   ~ 0
+PSON
+Wire Wire Line
+	3900 3050 4300 3050
+Wire Wire Line
+	3900 2850 3900 3250
+Connection ~ 3900 2850
+Wire Wire Line
+	5100 3050 5450 3050
+Wire Wire Line
+	5450 2850 5450 3250
+Connection ~ 5450 2850
+Wire Wire Line
+	4300 3150 4200 3150
+Wire Wire Line
+	4200 3150 4200 2950
+Connection ~ 4200 2950
+Wire Wire Line
+	5450 3150 5100 3150
+Connection ~ 5450 3050
+Wire Wire Line
+	3900 3250 4300 3250
+Connection ~ 3900 3050
+Wire Wire Line
+	5450 3250 5100 3250
+Connection ~ 5450 3150
+Wire Wire Line
+	4300 3350 4050 3350
+Text Label 4050 3350 0    60   ~ 0
+PG
+Wire Wire Line
+	4300 3450 3750 3450
+Wire Wire Line
+	3750 3450 3750 3350
+$Comp
+L +5V #PWR03
+U 1 1 54877824
+P 3750 3350
+F 0 "#PWR03" H 3750 3440 20  0001 C CNN
+F 1 "+5V" H 3750 3440 30  0000 C CNN
+F 2 "" H 3750 3350 60  0000 C CNN
+F 3 "" H 3750 3350 60  0000 C CNN
+	1    3750 3350
+	1    0    0    -1  
+$EndComp
+Text Label 3800 3450 0    60   ~ 0
+5V_SB
+Wire Wire Line
+	5100 3450 5500 3450
+Wire Wire Line
+	5100 3550 5300 3550
+Text Label 5500 3450 2    60   ~ 0
+5V
+Wire Wire Line
+	4300 3550 3900 3550
+Text Label 3900 3550 0    60   ~ 0
+12V
+Wire Wire Line
+	6550 4600 6550 4900
+Text Label 6550 4900 1    60   ~ 0
+12V
+Wire Wire Line
+	5500 4600 5500 4900
+Text Label 5500 4900 1    60   ~ 0
+5V
+Wire Wire Line
+	6350 4600 6350 4750
+$Comp
+L GND-RESCUE-atxpowerboard #PWR04
+U 1 1 54877A21
+P 6350 4750
+F 0 "#PWR04" H 6350 4750 30  0001 C CNN
+F 1 "GND" H 6350 4680 30  0001 C CNN
+F 2 "" H 6350 4750 60  0000 C CNN
+F 3 "" H 6350 4750 60  0000 C CNN
+	1    6350 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND-RESCUE-atxpowerboard #PWR05
+U 1 1 54877A2E
+P 5300 4750
+F 0 "#PWR05" H 5300 4750 30  0001 C CNN
+F 1 "GND" H 5300 4680 30  0001 C CNN
+F 2 "" H 5300 4750 60  0000 C CNN
+F 3 "" H 5300 4750 60  0000 C CNN
+	1    5300 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 4750 5300 4600
+$Comp
+L R-RESCUE-atxpowerboard R1
+U 1 1 54877BA4
+P 3850 4450
+F 0 "R1" V 3930 4450 40  0000 C CNN
+F 1 "220" V 3857 4451 40  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 3780 4450 30  0001 C CNN
+F 3 "~" H 3850 4450 30  0000 C CNN
+	1    3850 4450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4250 4450 4100 4450
+Wire Wire Line
+	4650 4450 4850 4450
+Wire Wire Line
+	4850 4450 4850 4550
+$Comp
+L GND-RESCUE-atxpowerboard #PWR06
+U 1 1 54877C30
+P 4850 4550
+F 0 "#PWR06" H 4850 4550 30  0001 C CNN
+F 1 "GND" H 4850 4480 30  0001 C CNN
+F 2 "" H 4850 4550 60  0000 C CNN
+F 3 "" H 4850 4550 60  0000 C CNN
+	1    4850 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 4450 3300 4450
+Text Label 6625 2525 0    60   ~ 0
+PSON
+$Comp
+L CONN_10X2 P1
+U 1 1 55FF3C65
+P 4700 3100
+F 0 "P1" H 4700 3650 60  0000 C CNN
+F 1 "CONN_10X2" V 4700 3000 50  0000 C CNN
+F 2 "JbLb_lib:ATX20" H 4700 3100 60  0001 C CNN
+F 3 "" H 4700 3100 60  0000 C CNN
+	1    4700 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 3550 5300 3450
+Connection ~ 5300 3450
+Text Label 3300 4450 0    60   ~ 0
+5V
+$Comp
+L CONN_1 P8
+U 1 1 55FF4B74
+P 7075 2900
+F 0 "P8" H 7155 2900 40  0000 L CNN
+F 1 "CONN_1" H 7075 2955 30  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 7075 2900 60  0001 C CNN
+F 3 "" H 7075 2900 60  0000 C CNN
+	1    7075 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P7
+U 1 1 55FF4C46
+P 7075 2775
+F 0 "P7" H 7155 2775 40  0000 L CNN
+F 1 "CONN_1" H 7075 2830 30  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 7075 2775 60  0001 C CNN
+F 3 "" H 7075 2775 60  0000 C CNN
+	1    7075 2775
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P5
+U 1 1 55FF4D28
+P 7075 2525
+F 0 "P5" H 7155 2525 40  0000 L CNN
+F 1 "CONN_1" H 7075 2580 30  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 7075 2525 60  0001 C CNN
+F 3 "" H 7075 2525 60  0000 C CNN
+	1    7075 2525
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P6
+U 1 1 55FF4E0E
+P 7075 2650
+F 0 "P6" H 7155 2650 40  0000 L CNN
+F 1 "CONN_1" H 7075 2705 30  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 7075 2650 60  0001 C CNN
+F 3 "" H 7075 2650 60  0000 C CNN
+	1    7075 2650
+	1    0    0    -1  
+$EndComp
+Text Label 6625 2650 0    60   ~ 0
+PG
+Text Label 6625 2775 0    60   ~ 0
+5V_SB
+Text Label 6625 2900 0    60   ~ 0
+5V
+NoConn ~ 5100 2750
+NoConn ~ 5100 3350
+$Comp
+L GND-RESCUE-atxpowerboard #PWR07
+U 1 1 55FF5C17
+P 6625 3150
+F 0 "#PWR07" H 6625 3150 30  0001 C CNN
+F 1 "GND" H 6625 3080 30  0001 C CNN
+F 2 "" H 6625 3150 60  0000 C CNN
+F 3 "" H 6625 3150 60  0000 C CNN
+	1    6625 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6525 3025 6925 3025
+Wire Wire Line
+	6625 3025 6625 3150
+Wire Wire Line
+	6925 2900 6625 2900
+Wire Wire Line
+	6625 2775 6925 2775
+Wire Wire Line
+	6625 2650 6925 2650
+Wire Wire Line
+	6625 2525 6925 2525
+$Comp
+L CONN_1 P4
+U 1 1 55FF5D9A
+P 7075 2400
+F 0 "P4" H 7155 2400 40  0000 L CNN
+F 1 "CONN_1" H 7075 2455 30  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 7075 2400 60  0001 C CNN
+F 3 "" H 7075 2400 60  0000 C CNN
+	1    7075 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6925 2400 6525 2400
+Wire Wire Line
+	6525 2400 6525 3025
+Connection ~ 6625 3025
+$EndSCHEMATC

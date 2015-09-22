@@ -1,0 +1,80 @@
+Cmp-Mod V01 Created by Cvpcb (2014-jul-16 BZR unknown)-product   date = lun. 21 sept. 2015 14:55:06 CEST
+
+BeginCmp
+TimeStamp = /54874A2E;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LEDs:LED-5MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /55FF3C65;
+Reference = P1;
+ValeurCmp = CONN_10X2;
+IdModule  = JbLb_lib:ATX20;
+EndCmp
+
+BeginCmp
+TimeStamp = /548749B8;
+Reference = P2;
+ValeurCmp = 5V;
+IdModule  = Connect:bornier2;
+EndCmp
+
+BeginCmp
+TimeStamp = /548749CB;
+Reference = P3;
+ValeurCmp = 12V;
+IdModule  = Connect:bornier2;
+EndCmp
+
+BeginCmp
+TimeStamp = /55FF5D9A;
+Reference = P4;
+ValeurCmp = CONN_1;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = /55FF4D28;
+Reference = P5;
+ValeurCmp = CONN_1;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = /55FF4E0E;
+Reference = P6;
+ValeurCmp = CONN_1;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = /55FF4C46;
+Reference = P7;
+ValeurCmp = CONN_1;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = /55FF4B74;
+Reference = P8;
+ValeurCmp = CONN_1;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = /548776EC;
+Reference = P9;
+ValeurCmp = CONN_1;
+IdModule  = Pin_Headers:Pin_Header_Straight_1x01;
+EndCmp
+
+BeginCmp
+TimeStamp = /54877BA4;
+Reference = R1;
+ValeurCmp = 220;
+IdModule  = Resistors_ThroughHole:Resistor_Horizontal_RM10mm;
+EndCmp
+
+EndListe
