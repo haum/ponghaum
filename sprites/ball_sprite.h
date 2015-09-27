@@ -18,6 +18,14 @@ class BallSprite : public Sprite {
 		  */
 		void set_queue(bool active);
 
+		/** Set ball invisible effect
+		  * @param [in] active Effect active
+		  */
+		void set_hidden(bool active);
+
+		/** Returns hidden flag **/
+		bool is_hidden();
+
 		/** Animation function **/
 		virtual void animate();
 
@@ -27,6 +35,7 @@ class BallSprite : public Sprite {
 
 		bool shiny; /// Shiny flag
 		bool queue; /// Queue flag
+		bool hidden; /// Hidden flag
 
 		float queue_length; /// Queue length
 		float last_position; /// Registers last position to compute speed

@@ -47,6 +47,10 @@ class GameManager {
 	private:
 		/** Power-on detector helper **/
 		bool was_powered;
+		/** Player 1 attack ready **/
+		bool attack1;
+		/** Player 2 attack ready **/
+		bool attack2;
 
 	public:
 		/** Constructor **/
@@ -75,6 +79,14 @@ class GameManager {
 
 		/** HardwareTest screen **/
 		void test_hardware();
+
+		/** Check if attacks are ready **/
+		bool check_attack1();
+		bool check_attack2();
+
+		/** Set attacks not ready **/
+		void attack1_used();
+		void attack2_used();
 
 		GameData data;
 		GameMode mode;

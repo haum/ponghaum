@@ -21,6 +21,7 @@ class PlayingScreen : public GameScreen {
 		float ball_position;
 		float ball_local_speed;
 		LinearAnimator ball_speed;
+		LinearAnimator attack;
 		int ball_direction;
 		bool quit;
 		bool inhibed_controls;

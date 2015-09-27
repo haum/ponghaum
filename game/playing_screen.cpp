@@ -8,6 +8,8 @@ void PlayingScreen::init() {
 	pad1.init();
 	pad1.reverse(true);
 	pad2.init();
+	attack.init();
+	attack.set_duration(500);
 
 	ball_local_speed = 0;
 	if (game.data.last_winner == PLAYER2) {
@@ -89,6 +91,18 @@ void PlayingScreen::animate() {
 				pad2.fire(20);
 			}
 		}
+		// Attacks
+		if (khroma.btn1.dclicked() && game.check_attack1()){
+			game.attack1_used();
+			ball.set_hidden(true);
+			attack.start();
+		}
+		if (khroma.btn2.dclicked() && game.check_attack2()){
+			game.attack2_used();
+			ball.set_hidden(true);
+			attack.start();
+		}
+
 		ball.animate();
 	} else if (pad1.can_fire() && pad2.can_fire()) {
 		game.show_scores();
@@ -97,4 +111,10 @@ void PlayingScreen::animate() {
 	// Update all
 	pad1.animate();
 	pad2.animate();
+	attack.animate();
+
+	// Check if attack is finished
+	if(!attack.running()){
+		ball.set_hidden(false);
+	}
 }
