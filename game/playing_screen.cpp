@@ -35,6 +35,7 @@ void PlayingScreen::init() {
 void PlayingScreen::animate() {
 	khroma.leds.clear();
 	ball_speed.animate();
+
 	// Compute ball speed and new position
 	float real_speed = polychrhaum::dtms / (800.0 + (1 - ball_speed) * 4000.0 - ball_local_speed) * khroma.get_halfsize() * 2;
 	if (real_speed > polychrhaum::dtms / 500.0 * khroma.get_halfsize() * 2)
