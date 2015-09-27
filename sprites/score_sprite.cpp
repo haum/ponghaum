@@ -32,12 +32,25 @@ void ScoreSprite::animate() {
 	}
 
 	int imax = (old_score + anim * score_delta ) * score_unit_length;
+
+	unsigned char r, g, b, sep_r, sep_g, sep_b;
 	r = get_reversed() ? 0xff : 0x00;
 	g = get_reversed() ? 0x00 : 0xff;
 	b = get_reversed() ? 0xff : 0xff;
-	float alpha = (1 - animfadeout);
-	for (int i = khroma.get_halfsize(); i > khroma.get_halfsize() - imax; --i)
-		draw(i, r * anim * alpha, g * anim * alpha, b * anim * alpha);
+	sep_r = 0xFF ^ r;
+	sep_b = 0xFF ^ b;
+	sep_g = 0xFF ^ g;
+	float alpha = (1 - animfadeout) * anim;
+
+	int next_sep = score_unit_length - 1;
+	for (int i = khroma.get_halfsize(); i > khroma.get_halfsize() - imax; --i) {
+		if ( i == khroma.get_halfsize() - next_sep) {
+			draw(i, sep_r * alpha, sep_g * alpha, sep_b * alpha);
+			next_sep += score_unit_length;
+		} else {
+			draw(i, r * alpha, g * alpha, b * alpha);
+		}
+	}
 	draw(khroma.get_halfsize() - animloop * imax, r/2 * alpha, g/2 * alpha, b/2 * alpha);
 }
 
