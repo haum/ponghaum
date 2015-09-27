@@ -3,7 +3,7 @@
 
 void ScoreSprite::init_sprite() {
 	anim.init();
-	anim.set_duration(500);
+	anim.set_duration(700);
 	animloop.init();
 	animloop.set_duration(1000);
 	animloop.loop(true);
@@ -20,8 +20,18 @@ void ScoreSprite::animate() {
 	anim.animate();
 	animloop.animate();
 	animfadeout.animate();
-	int imax = score * anim * 2 * khroma.get_halfsize() / MAX_POINTS;
-	unsigned char r, g, b;
+
+	int score_unit_length = 2 * khroma.get_halfsize() / MAX_POINTS;
+	int old_score, score_delta;
+	if (get_reversed()) {
+		old_score = game.data.old_p1score;
+		score_delta = game.data.p1score - old_score;
+	} else {
+		old_score = game.data.old_p2score;
+		score_delta = game.data.p2score - old_score;
+	}
+
+	int imax = (old_score + anim * score_delta ) * score_unit_length;
 	r = get_reversed() ? 0xff : 0x00;
 	g = get_reversed() ? 0x00 : 0xff;
 	b = get_reversed() ? 0xff : 0xff;
