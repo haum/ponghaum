@@ -37,6 +37,8 @@ struct GameData {
 	GamePlayer last_winner; /// Last winner player
 	int p1score; /// Score of player 1
 	int p2score; /// Score of player 2
+	int old_p1score; /// Old score of player 1
+	int old_p2score; /// Old score of player 2
 };
 
 
