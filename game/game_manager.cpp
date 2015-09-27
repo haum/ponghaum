@@ -29,8 +29,6 @@ GameManager::GameManager() : state(GameState_WAIT_PLAYERS) {
 void GameManager::init() {
 	scr = &screens.poweroff;
 	scr->init();
-	attack1 = true;
-	attack2 = true;
 }
 
 void GameManager::animate() {
@@ -50,8 +48,6 @@ void GameManager::restart_game() {
 	data.p2score = 0;
 	data.old_p1score = 0;
 	data.old_p2score = 0;
-	attack1 = true;
-	attack2 = true;
 	play();
 }
 
@@ -78,20 +74,4 @@ void GameManager::show_scores() {
 void GameManager::test_hardware() {
 	scr = &screens.test_hardware;
 	scr->init();
-}
-
-void GameManager::attack1_used() {
-	attack1 = false;
-}
-
-void GameManager::attack2_used() {
-	attack2 = false;
-}
-
-bool GameManager::check_attack1() {
-	return attack1;
-}
-
-bool GameManager::check_attack2() {
-	return attack2;
 }
