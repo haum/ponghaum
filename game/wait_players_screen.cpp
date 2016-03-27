@@ -10,6 +10,7 @@ void WaitPlayersScreen::init() {
 	ball_position.start();
 	ball.init();
 	ball.set_queue(true);
+	ball.set_color(0x00, 0x00, 0xff);
 	pad1.init();
 	pad1.reverse(true);
 	pad2.init();

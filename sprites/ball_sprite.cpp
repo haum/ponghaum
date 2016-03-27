@@ -19,6 +19,12 @@ void BallSprite::init_sprite() {
 	last_position = get_position();
 }
 
+void BallSprite::set_color(uint8_t r, uint8_t g, uint8_t b){
+	red = r;
+	green = g;
+	blue = b;
+}
+
 void BallSprite::animate() {
 	if (queue) {
 		queue_length += (get_position() - last_position);
@@ -37,6 +43,6 @@ void BallSprite::animate() {
 			else
 				draw(-i, 255 + 12 * i, 120 + 12 * i, 0);
 	}
-	draw(0, 0xff, 0xff, 0xff);
+	draw(0, red, green, blue);
 	last_position = get_position();
 }
