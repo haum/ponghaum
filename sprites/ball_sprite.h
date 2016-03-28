@@ -18,7 +18,7 @@ class BallSprite : public Sprite {
 		  */
 		void set_queue(bool active);
 
-		void set_color(uint8_t r, uint8_t g, uint8_t b);
+		void set_color(char r, char g, char b);
 
 		/** Animation function **/
 		virtual void animate();
@@ -30,9 +30,9 @@ class BallSprite : public Sprite {
 		bool shiny; /// Shiny flag
 		bool queue; /// Queue flag
 
-		uint8_t red;
-		uint8_t green;
-		uint8_t blue;
+		char red;
+		char green;
+		char blue;
 
 		float queue_length; /// Queue length
 		float last_position; /// Registers last position to compute speed

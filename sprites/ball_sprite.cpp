@@ -19,7 +19,7 @@ void BallSprite::init_sprite() {
 	last_position = get_position();
 }
 
-void BallSprite::set_color(uint8_t r, uint8_t g, uint8_t b){
+void BallSprite::set_color(char r, char g, char b){
 	red = r;
 	green = g;
 	blue = b;
