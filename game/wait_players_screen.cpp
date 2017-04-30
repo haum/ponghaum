@@ -21,10 +21,10 @@ void WaitPlayersScreen::init() {
 void WaitPlayersScreen::animate() {
 	khroma.leds.clear();
 	ball_position.animate();
+	bool dpressed_p1 = khroma.btn1.dpressed(true);
+	bool dpressed_p2 = khroma.btn2.dpressed(true);
 	if (!quit) {
 		bool start = false;
-		bool dpressed_p1 = 0;
-		bool dpressed_p2 = 0;
 		ball.set_position((khroma.get_halfsize() - 25) * (ball_position * 2 - 1));
 		if (khroma.btn1.stouched() && pad1.can_fire()) {
 			last_touch = PLAYER1;
@@ -33,14 +33,6 @@ void WaitPlayersScreen::animate() {
 		if (khroma.btn2.stouched() && pad2.can_fire()) {
 			last_touch = PLAYER2;
 			pad2.fire(20);
-		}
-		if (khroma.btn1.dpressed(true)) {
-			khroma.leds.set_rgb(-khroma.get_halfsize(), 0xAA, 0, 0);
-			dpressed_p1 = 1;
-		}
-		if (khroma.btn2.dpressed(true)) {
-			khroma.leds.set_rgb(+khroma.get_halfsize(), 0xAA, 0, 0);
-			dpressed_p2 = 1;
 		}
 		if (dpressed_p1 && dpressed_p2) {
 			game.mode = CONQUER;
@@ -74,4 +66,8 @@ void WaitPlayersScreen::animate() {
 	pad1.animate();
 	pad2.animate();
 	ball.animate();
+	if (dpressed_p1)
+		khroma.leds.set_rgb(-khroma.get_halfsize(), 0xAA, 0, 0);
+	if (dpressed_p2)
+		khroma.leds.set_rgb(+khroma.get_halfsize(), 0xAA, 0, 0);
 }

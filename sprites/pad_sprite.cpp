@@ -25,4 +25,8 @@ void PadSprite::animate() {
 	b = get_reversed() ? 0xff : 0xff;
 	for (int i = khroma.get_halfsize(); i > khroma.get_halfsize() - imax; --i)
 		draw(i, r * lightning, g * lightning, b * lightning);
+	float l = lightning;
+	if (l < 0.4)
+		l = 0.4;
+	draw(khroma.get_halfsize(), r * l, g * l, b * l);
 }
