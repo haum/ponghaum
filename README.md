@@ -17,6 +17,8 @@ Le paramétrage des pins de l'arduino est réalisé dans le fichier khroma.h ave
 Par défaut, les boutons sont reliés aux entrées 2 et 3 et le bandeau de LEDs est relié à la sortie 10.
 L'arduino est reliée à une alimentation ATX. Un bouton poussoir POWERSTOP (4) permet de commander l'extinction, une broche POWERCMD (5) est reliée à la commande d'allumage de l'ATX (fil vert) et une broche POWERGOOD (6) permet de détecter l'allumage de l'alimentation.
 
+![Schéma Fritzing](pong_bb.jpg)
+
 ### Compilation
 
 Lorsque le dépôt est cloné, il faut penser à charger les submodules pour avoir les dépendances permettant de construire le programme pour Arduino.
