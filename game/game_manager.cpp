@@ -4,6 +4,7 @@
 #include "wait_players_screen.h"
 #include "test_hardware_screen.h"
 #include "playing_screen.h"
+#include "playing4x_screen.h"
 #include "rainbow_screen.h"
 #include "scores_screen.h"
 
@@ -14,6 +15,7 @@ static struct {
 	WaitPlayersScreen wait_players;
 	TestHardwareScreen test_hardware;
 	PlayingScreen playing;
+	Playing4xScreen playing4x;
 	RainbowScreen rainbow;
 	ScoresScreen scores;
 } screens;
@@ -52,7 +54,11 @@ void GameManager::restart_game() {
 }
 
 void GameManager::play() {
-	scr = &screens.playing;
+	if (false) { // TODO add a way to choose which game to play
+		scr = &screens.playing;
+	} else {
+		scr = &screens.playing4x;
+	}
 	scr->init();
 }
 
