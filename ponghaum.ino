@@ -16,7 +16,7 @@ void setup() {
 	khroma.config_animate(animate);
 	khroma.setup();
 	khroma.log("Bienvenue dans ponghaum !\n");
-    version;
+	khroma.log(NUM_VERSION "\n");
 	game.init();
 }
 
