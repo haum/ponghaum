@@ -13,6 +13,8 @@ class Playing4xScreen : public GameScreen {
 		/** Animate function **/
 		virtual void animate();
 
+		virtual void generate_random_direction();
+
 	private:
 		BallSprite ball; // The ball
 		PadSprite pad1; // Left pad
@@ -24,6 +26,9 @@ class Playing4xScreen : public GameScreen {
 		int ball_direction;
 		bool quit;
 		bool inhibed_controls;
+		bool half_passed;
+		int old_direction;
+		int random_direction;
 };
 
 #endif

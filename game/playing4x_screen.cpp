@@ -1,6 +1,23 @@
 #include "playing4x_screen.h"
 
 #include "game_manager.h"
+#include <stdlib.h>     /* srand, rand */
+
+void Playing4xScreen::generate_random_direction() {
+	old_direction = ball_direction;
+
+	while (old_direction != ball_direction) {
+		random_direction = rand() % 2;
+		khroma.log(random_direction);
+		if (random_direction == 0) {
+			ball_direction = -1;
+		} else {
+			ball_direction = 1;
+		}
+		ball_position = 0;
+		half_passed = true;
+	}
+}
 
 void Playing4xScreen::init() {
 	ball.init();
@@ -36,6 +53,18 @@ void Playing4xScreen::init() {
 void Playing4xScreen::animate() {
 	khroma.leds.clear();
 	ball_speed.animate();
+
+	if (!half_passed) {
+		if (ball_direction == 1) {
+			if (ball_position > 0) {
+				generate_random_direction();
+			}
+		} else {
+			if (ball_position < 0) {
+				generate_random_direction();
+			}
+		}
+	}
 
 	// Compute ball speed and new position
 	float real_speed = polychrhaum::dtms / (800.0 + (1 - ball_speed) * 4000.0 - ball_local_speed) * khroma.get_halfsize() * 2;
@@ -77,6 +106,7 @@ void Playing4xScreen::animate() {
 				pad1.fire(khroma.get_halfsize() + ball_position);
 				ball_direction = 1;
 				ball_local_speed = 50 * (20 - khroma.get_halfsize() - ball_position);
+				half_passed = false;
 			} else {
 				pad1.fire(20);
 			}
@@ -86,6 +116,7 @@ void Playing4xScreen::animate() {
 				pad2.fire(khroma.get_halfsize() - ball_position);
 				ball_direction = -1;
 				ball_local_speed = 50 * (20 - khroma.get_halfsize() + ball_position);
+				half_passed = false;
 			} else {
 				pad2.fire(20);
 			}
