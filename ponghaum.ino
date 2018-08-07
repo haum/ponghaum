@@ -16,6 +16,7 @@ void setup() {
 	khroma.config_animate(animate);
 	khroma.setup();
 	khroma.log("Bienvenue dans ponghaum !\n");
+	khroma.log("Avec le mode 4 joueurs !\n");
 	khroma.log(NUM_VERSION "\n");
 	game.init();
 }
