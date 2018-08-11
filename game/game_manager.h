@@ -12,10 +12,16 @@ enum GameState {
 	GameState_SCORE_DISPLAY, // Display score
 };
 
+/** Game communication messages **/
+enum GameCommMsg {
+	GameCommMsg_INIT4,
+};
+
 /** Generic game screen **/
 class GameScreen {
 	public:
 		virtual void init() {}
+		virtual void onReceived(GameCommMsg, char[4]) {};
 		virtual void animate() = 0;
 };
 
@@ -57,6 +63,9 @@ class GameManager {
 
 		/** Animate outputs and treat inputs **/
 		void animate();
+
+		/** Entry point for communication mechanism **/
+		void communicate(char type, char msg[4]);
 
 		/** Restart a game **/
 		void restart_game();

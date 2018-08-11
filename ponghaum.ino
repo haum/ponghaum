@@ -8,12 +8,17 @@ void animate() {
 	game.animate();
 }
 
+void communicate(char type, char msg[4]) {
+	game.communicate(type, msg);
+}
+
 void setup() {
 	khroma.config_buttons(PIN__BTN1, PIN__BTN2);
 	khroma.config_power(PIN__POWER_CMD, PIN__POWER_STATUS, PIN__POWER_BTN);
 	khroma.config_light_ctrl(PIN__POTAR_LIGHT);
 	khroma.config_speed_ctrl(PIN__POTAR_SPEED);
 	khroma.config_animate(animate);
+	khroma.config_communication(communicate);
 	khroma.setup();
 	khroma.log("Bienvenue dans ponghaum !\n");
 	khroma.log("Avec le mode 4 joueurs !\n");

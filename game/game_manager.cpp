@@ -45,6 +45,13 @@ void GameManager::animate() {
 		initscreen();
 }
 
+void GameManager::communicate(char type, char msg[4]) {
+	scr->onReceived(
+		static_cast<GameCommMsg>(type), // Assume correct
+		msg
+	);
+}
+
 void GameManager::restart_game() {
 	data.p1score = 0;
 	data.p2score = 0;
