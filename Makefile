@@ -32,6 +32,9 @@ ${USER_LIB_PATH}/PolychrHAUM/polychrhaum-pc.a: force_look
 play: polychrhaum-pc
 	./polychrhaum-pc
 
+play4: polychrhaum-pc
+	socat exec:./polychrhaum-pc exec:./polychrhaum-pc
+
 build-pc/%.o:%.cpp $(wildcard *.h **/*.h **/**/*.h)
 	@mkdir -p build-pc/$(dir $<)
 	${PC_CXX} ${CXXFLAGS} ${PC_CXXFLAGS} -c $< -o $@
