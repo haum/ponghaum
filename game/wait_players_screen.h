@@ -10,6 +10,9 @@ class WaitPlayersScreen : public GameScreen {
 		/** Init function **/
 		virtual void init();
 
+		/** Communication function **/
+		virtual void onReceived(GameCommMsg, char[4]);
+
 		/** Animate function **/
 		virtual void animate();
 

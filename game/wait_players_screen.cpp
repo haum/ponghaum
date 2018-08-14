@@ -18,6 +18,22 @@ void WaitPlayersScreen::init() {
 	khroma.log("Attente des joueurs : maintenez les buzzers appuyés\n");
 }
 
+void WaitPlayersScreen::onReceived(GameCommMsg type, char msg[4]) {
+	if (type == GameCommMsg_INIT4) {
+		if (msg[0] == 0) {
+			// There is another ponghaum, let's play 4 players
+			game.data.playing4_enabled = true;
+			game.data.playing4_master = false;
+			char msg_out[4] = {1, 0, 0, 0};
+			khroma.send_data(GameCommMsg_INIT4, msg_out);
+		} else if (msg[0] == 1) {
+			// Slave answered, let's play 4 players
+			game.data.playing4_enabled = true;
+			game.data.playing4_master = true;
+		}
+	}
+}
+
 void WaitPlayersScreen::animate() {
 	khroma.leds.clear();
 	ball_position.animate();
@@ -44,6 +60,8 @@ void WaitPlayersScreen::animate() {
 		}
 		if (start) {
 			if (game.mode == CONQUER) khroma.log("Conqueror !");
+			char msg[4] = {0, 0, 0, 0}; // Notify presence
+			khroma.send_data(GameCommMsg_INIT4, msg);
 			quit = true;
 			ball_position.set_duration(500);
 			ball_position.loop(false);

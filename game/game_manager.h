@@ -45,6 +45,8 @@ struct GameData {
 	int p2score; /// Score of player 2
 	int old_p1score; /// Old score of player 1
 	int old_p2score; /// Old score of player 2
+	bool playing4_enabled; /// Two ponghaum/4players enabled
+	bool playing4_master; /// This pinghaum is master in the 4 players game
 };
 
 

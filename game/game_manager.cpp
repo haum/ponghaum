@@ -61,10 +61,10 @@ void GameManager::restart_game() {
 }
 
 void GameManager::play() {
-	if (false) { // TODO add a way to choose which game to play
-		scr = &screens.playing;
-	} else {
+	if (data.playing4_enabled) {
 		scr = &screens.playing4x;
+	} else {
+		scr = &screens.playing;
 	}
 	scr->init();
 }
