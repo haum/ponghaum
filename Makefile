@@ -3,8 +3,12 @@ RELATIVE_PATH?=.
 
 # ARDUINO SETTINGS
 
+# Pong 1 (big box)
 BOARD_TAG     ?= pro5v328
 ARDUINO_PORT  ?= /dev/ttyUSB0
+# Pong 2 (open box)
+# BOARD_TAG     ?= uno
+# ARDUINO_PORT  ?= /dev/ttyACM0
 
 # PC SETTINGS
 
