@@ -91,7 +91,8 @@ void Playing4xScreen::animate() {
 			game.data.p2score += 1;
 			if (game.mode == CONQUER && game.data.p2score + game.data.p1score >= MAX_POINTS)
 				game.data.p1score = MAX_POINTS - game.data.p2score;
-			quit = true;
+			//quit = true;
+			ball_direction = 1;
 		}
 		if (ball_position > khroma.get_halfsize()) {
 			game.data.last_winner = PLAYER1;
@@ -100,7 +101,8 @@ void Playing4xScreen::animate() {
 			game.data.p1score += 1;
 			if (game.mode == CONQUER && game.data.p2score + game.data.p1score >= MAX_POINTS)
 				game.data.p2score = MAX_POINTS - game.data.p1score;
-			quit = true;
+			//quit = true;
+			ball_direction = -1;
 		}
 
 		// Play pads
