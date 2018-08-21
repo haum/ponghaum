@@ -67,8 +67,8 @@ void WaitPlayersScreen::animate() {
 			pad2.fire(20);
 		}
 		if (dpressed_p1 && dpressed_p2) {
-			game.mode = CONQUER;
-			start = true;
+			//game.mode = CONQUER;
+			//start = true;
 			//game.test_hardware();
 		} else if (khroma.btn1.slpressed(true) && khroma.btn2.slpressed(true) ) {
 			game.mode = NORMAL;
