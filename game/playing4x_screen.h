@@ -13,6 +13,9 @@ class Playing4xScreen : public GameScreen {
 		/** Animate function **/
 		virtual void animate();
 
+		/** Communication function **/
+		virtual void onReceived(GameCommMsg, char[4]);
+
 		virtual void generate_random_direction();
 
 	private:

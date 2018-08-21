@@ -20,16 +20,32 @@ void WaitPlayersScreen::init() {
 
 void WaitPlayersScreen::onReceived(GameCommMsg type, char msg[4]) {
 	if (type == GameCommMsg_INIT4) {
-		if (msg[0] == 0) {
+		if (msg[0] == 0 && msg[1] == 0 && msg[2] == 0 && msg[3] == 0) {
 			// There is another ponghaum, let's play 4 players
 			game.data.playing4_enabled = true;
 			game.data.playing4_master = false;
 			char msg_out[4] = {1, 0, 0, 0};
 			khroma.send_data(GameCommMsg_INIT4, msg_out);
-		} else if (msg[0] == 1) {
+		} else if (msg[0] == 1 && msg[1] == 0 && msg[2] == 0 && msg[3] == 0) {
 			// Slave answered, let's play 4 players
 			game.data.playing4_enabled = true;
 			game.data.playing4_master = true;
+			char msg_out[4] = {0, 0, 0, 1};
+			khroma.send_data(GameCommMsg_INIT4, msg_out);
+		} else if (msg[0] == 0 && msg[1] == 0 && msg[2] == 0 && msg[3] == 1) {
+			// Master finally answered to start play mode
+			game.mode = NORMAL;
+			pad1.animate();
+			pad2.animate();
+			ball.animate();
+			quit = true;
+			ball_position.set_duration(500);
+			ball_position.loop(false);
+			ball_position.updown(false);
+			ball_position.start();
+			int target = (last_touch == PLAYER1 ? -khroma.get_halfsize() : khroma.get_halfsize());
+			quit_start = ball.get_position();
+			quit_dist = target - quit_start;
 		}
 	}
 }

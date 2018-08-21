@@ -50,6 +50,9 @@ void Playing4xScreen::init() {
 	khroma.log("C'est (re)parti !\n");
 }
 
+void Playing4xScreen::onReceived(GameCommMsg type, char msg[4]) {
+}
+
 void Playing4xScreen::animate() {
 	khroma.leds.clear();
 	ball_speed.animate();
