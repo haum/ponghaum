@@ -51,6 +51,13 @@ void Playing4xScreen::init() {
 }
 
 void Playing4xScreen::onReceived(GameCommMsg type, char msg[4]) {
+	if (type == GameCommMsg_INIT4) {
+		if (msg[0] == 1) {
+				ball.set_queue(true);
+		} else {
+				ball.set_queue(false);
+		}
+	}
 }
 
 void Playing4xScreen::animate() {
@@ -107,6 +114,11 @@ void Playing4xScreen::animate() {
 
 		// Play pads
 		if (khroma.btn1.stouched() && pad1.can_fire() && !inhibed_controls) {
+			if (game.data.playing4_master) {
+					char msg[4] = {1, 0, 0, 0};
+					khroma.send_data(GameCommMsg_INIT4, msg);
+			}
+
 			if (20 - khroma.get_halfsize() > ball_position) {
 				pad1.fire(khroma.get_halfsize() + ball_position);
 				ball_direction = 1;
@@ -117,6 +129,10 @@ void Playing4xScreen::animate() {
 			}
 		}
 		if (khroma.btn2.stouched() && pad2.can_fire() && !inhibed_controls) {
+			if (game.data.playing4_master) {
+					char msg[4] = {0, 0, 0, 0};
+					khroma.send_data(GameCommMsg_INIT4, msg);
+			}
 			if (khroma.get_halfsize() - 20 < ball_position) {
 				pad2.fire(khroma.get_halfsize() - ball_position);
 				ball_direction = -1;
