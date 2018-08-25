@@ -60,6 +60,55 @@ void Playing4xScreen::onReceived(GameCommMsg type, char msg[4]) {
 	}
 }
 
+/* Game mode: 0 -> 6
+ * Ball direction: 0 -> 1
+ * score_player_1: 0 -> 3
+ * score_player_2: 0 -> 3
+ * sender_id: 0 -> 254
+ * receiver_id: 0 -> 254
+ * msg[4]
+ */
+void Playing4xScreen::make_msg(
+    int game_mode,
+    int ball_direction,
+    int score_player_1,
+    int score_player_2,
+    int sender_id,
+    int receiver_id,
+    char *msg) {
+
+    int byte_1, byte_2, byte_3, byte_4;
+
+    byte_1 = game_mode << 1;
+    byte_1 += ball_direction;
+    byte_1 = byte_1 << 2;
+    byte_1 += score_player_1;
+    byte_1 = byte_1 << 2;
+    byte_1 += score_player_2;
+
+    byte_2 = sender_id;
+
+    byte_3 = receiver_id;
+
+    byte_4 = 0;
+
+    msg[0] = byte_1;
+    msg[1] = byte_2;
+    msg[2] = byte_3;
+    msg[3] = byte_4;
+}
+
+char * Playing4xScreen::analyse_data(unsigned char *datas) {
+    returned_data[0] = datas[0] >> 5;
+    returned_data[1] = datas[0] >> 4 & 0x1;
+    returned_data[2] = datas[0] >> 2 & 0x3;
+    returned_data[3] = datas[0] & 0x3;
+    returned_data[4] = datas[1];
+    returned_data[5] = datas[2];
+    returned_data[6] = datas[3];
+    return returned_data;
+}
+
 void Playing4xScreen::animate() {
 	khroma.leds.clear();
 	ball_speed.animate();
@@ -115,7 +164,8 @@ void Playing4xScreen::animate() {
 		// Play pads
 		if (khroma.btn1.stouched() && pad1.can_fire() && !inhibed_controls) {
 			if (game.data.playing4_master) {
-					char msg[4] = {1, 0, 0, 0};
+					char msg[4];
+					make_msg(0, 0, 0, 1, 0, 0, msg);
 					khroma.send_data(GameCommMsg_INIT4, msg);
 			}
 
@@ -130,7 +180,8 @@ void Playing4xScreen::animate() {
 		}
 		if (khroma.btn2.stouched() && pad2.can_fire() && !inhibed_controls) {
 			if (game.data.playing4_master) {
-					char msg[4] = {0, 0, 0, 0};
+					char msg[4];
+					make_msg(0, 0, 0, 0, 0, 0, msg);
 					khroma.send_data(GameCommMsg_INIT4, msg);
 			}
 			if (khroma.get_halfsize() - 20 < ball_position) {

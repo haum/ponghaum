@@ -16,6 +16,18 @@ class Playing4xScreen : public GameScreen {
 		/** Communication function **/
 		virtual void onReceived(GameCommMsg, char[4]);
 
+		virtual void make_msg(
+				int game_mode,
+				int ball_direction,
+				int score_player_1,
+				int score_player_2,
+				int sender_id,
+				int receiver_id,
+				char *msg);
+
+		virtual char * analyse_data(unsigned char *datas);
+
+
 		virtual void generate_random_direction();
 
 	private:
@@ -32,6 +44,7 @@ class Playing4xScreen : public GameScreen {
 		bool half_passed;
 		int old_direction;
 		int random_direction;
+		char returned_data[7];
 };
 
 #endif
