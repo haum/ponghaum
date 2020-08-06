@@ -1,6 +1,5 @@
 #include "khroma.h"
 #include "game/game_manager.h"
-#include "version/version.h"
 
 PolychrHAUM <150, PIN__LEDSTRIP_DATA> khroma;
 
@@ -16,7 +15,6 @@ void setup() {
 	khroma.config_animate(animate);
 	khroma.setup();
 	khroma.log("Bienvenue dans ponghaum !\n");
-    version;
 	game.init();
 }
 
