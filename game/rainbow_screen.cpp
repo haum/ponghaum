@@ -31,7 +31,7 @@ void RainbowScreen::animate() {
 		);
 	}
 
-	if (khroma.btn1.touched(true) && khroma.btn2.touched(true)) {
+	if (khroma.btn2.touched(true)) {
 		game.initscreen();
 	}
 }

@@ -38,7 +38,7 @@ void WaitPlayersScreen::animate() {
 			game.mode = CONQUER;
 			start = true;
 			//game.test_hardware();
-		} else if (khroma.btn1.slpressed(true) && khroma.btn2.slpressed(true) ) {
+		} else if (khroma.btn2.slpressed(true)) {
 			game.mode = NORMAL;
 			start = true;
 		}
@@ -60,6 +60,7 @@ void WaitPlayersScreen::animate() {
 		if (khroma.btn1.released() && khroma.btn2.released() && ball_position.get_value() == 1) {
 			game.data.last_winner = last_touch;
 			game.restart_game();
+			randomSeed(millis());
 		}
 	}
 

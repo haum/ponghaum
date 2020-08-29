@@ -16,6 +16,7 @@
 #define PIN__LEDSTRIP_DATA 10
 #define PIN__POTAR_LIGHT   A0
 #define PIN__POTAR_SPEED   A1
+#define PIN__ALEA          A2
 
 extern PolychrHAUM <150, PIN__LEDSTRIP_DATA> khroma;
 

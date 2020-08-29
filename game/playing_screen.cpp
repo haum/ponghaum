@@ -29,6 +29,7 @@ void PlayingScreen::init() {
 	ball_speed.start();
 
 	quit = 0;
+	rand = random(100);
 
 	khroma.log("C'est (re)parti !\n");
 }
@@ -72,7 +73,9 @@ void PlayingScreen::animate() {
 		}
 
 		// Play pads
-		if (khroma.btn1.stouched() && pad1.can_fire() && !inhibed_controls) {
+		const int proba = 50;
+		int pos = -khroma.get_halfsize() + 20 * rand / proba;
+		if (rand < proba && ball_direction == -1 && ball_position < pos && pad1.can_fire() && !inhibed_controls) {
 			if (20 - khroma.get_halfsize() > ball_position) {
 				pad1.fire(khroma.get_halfsize() + ball_position);
 				ball_direction = 1;

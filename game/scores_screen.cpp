@@ -46,6 +46,7 @@ void ScoresScreen::animate() {
 		score2.fadeout();
 	}
 
+	ack1 = true;
 	if (!ack1 && khroma.btn1.stouched(true)) {
 		ack1 = true;
 		score1.fadeout();
