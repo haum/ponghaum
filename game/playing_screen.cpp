@@ -98,4 +98,10 @@ void PlayingScreen::animate() {
 	// Update all
 	pad1.animate();
 	pad2.animate();
+
+	// Button stayed pressed indicator
+	if (khroma.btn1.spressed(true))
+		khroma.leds.set_rgb(-khroma.get_halfsize(), 0xAA, 0xAA, 0);
+	if (khroma.btn2.spressed(true))
+		khroma.leds.set_rgb(+khroma.get_halfsize(), 0xAA, 0xAA, 0);
 }
