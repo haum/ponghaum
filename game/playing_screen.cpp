@@ -30,6 +30,7 @@ void PlayingScreen::init() {
 
 	quit = 0;
 	rand = random(100);
+	firsttime = true;
 
 	khroma.log("C'est (re)parti !\n");
 }
@@ -75,11 +76,14 @@ void PlayingScreen::animate() {
 		// Play pads
 		const int proba = 50;
 		int pos = -khroma.get_halfsize() + 20 * rand / proba;
-		if (rand < proba && ball_direction == -1 && ball_position < pos && pad1.can_fire() && !inhibed_controls) {
+		if (rand > proba) pos = -khroma.get_halfsize() + 21;
+		if (((rand < proba && ball_position < pos) || (rand > proba && ball_position < pos) || (firsttime && ball_position < -khroma.get_halfsize()+20)) && ball_direction == -1 && pad1.can_fire() && !inhibed_controls) {
+			firsttime = false;
 			if (20 - khroma.get_halfsize() > ball_position) {
 				pad1.fire(khroma.get_halfsize() + ball_position);
 				ball_direction = 1;
 				ball_local_speed = 50 * (20 - khroma.get_halfsize() - ball_position);
+				rand = random(100);
 			} else {
 				pad1.fire(20);
 			}

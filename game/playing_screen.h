@@ -24,6 +24,7 @@ class PlayingScreen : public GameScreen {
 		int ball_direction;
 		bool quit;
 		bool inhibed_controls;
+		bool firsttime;
 		int rand;
 };
 
